@@ -1,0 +1,210 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\SUNNG\\source\\repos\\TimeDemo\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{013C48C3-51F8-4442-A6AF-3D22A685962F}|TimeDemo\\TimeDemo.csproj|c:\\users\\sunng\\source\\repos\\timedemo\\timedemo\\properties\\resources.resx||{81828910-B8B3-4D2B-99A3-067027C180C1}",
+      "RelativeMoniker": "D:0:0:{013C48C3-51F8-4442-A6AF-3D22A685962F}|TimeDemo\\TimeDemo.csproj|solutionrelative:timedemo\\properties\\resources.resx||{81828910-B8B3-4D2B-99A3-067027C180C1}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{013C48C3-51F8-4442-A6AF-3D22A685962F}|TimeDemo\\TimeDemo.csproj|c:\\users\\sunng\\source\\repos\\timedemo\\timedemo\\properties\\resources.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{013C48C3-51F8-4442-A6AF-3D22A685962F}|TimeDemo\\TimeDemo.csproj|solutionrelative:timedemo\\properties\\resources.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{013C48C3-51F8-4442-A6AF-3D22A685962F}|TimeDemo\\TimeDemo.csproj|c:\\users\\sunng\\source\\repos\\timedemo\\timedemo\\timedemo.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|",
+      "RelativeMoniker": "D:0:0:{013C48C3-51F8-4442-A6AF-3D22A685962F}|TimeDemo\\TimeDemo.csproj|solutionrelative:timedemo\\timedemo.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{013C48C3-51F8-4442-A6AF-3D22A685962F}|TimeDemo\\TimeDemo.csproj|c:\\users\\sunng\\source\\repos\\timedemo\\timedemo\\databasehelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{013C48C3-51F8-4442-A6AF-3D22A685962F}|TimeDemo\\TimeDemo.csproj|solutionrelative:timedemo\\databasehelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{013C48C3-51F8-4442-A6AF-3D22A685962F}|TimeDemo\\TimeDemo.csproj|c:\\users\\sunng\\source\\repos\\timedemo\\timedemo\\barchartcontrol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{013C48C3-51F8-4442-A6AF-3D22A685962F}|TimeDemo\\TimeDemo.csproj|solutionrelative:timedemo\\barchartcontrol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{013C48C3-51F8-4442-A6AF-3D22A685962F}|TimeDemo\\TimeDemo.csproj|c:\\users\\sunng\\source\\repos\\timedemo\\timedemo\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{013C48C3-51F8-4442-A6AF-3D22A685962F}|TimeDemo\\TimeDemo.csproj|solutionrelative:timedemo\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{013C48C3-51F8-4442-A6AF-3D22A685962F}|TimeDemo\\TimeDemo.csproj|c:\\users\\sunng\\source\\repos\\timedemo\\timedemo\\mainform.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{013C48C3-51F8-4442-A6AF-3D22A685962F}|TimeDemo\\TimeDemo.csproj|solutionrelative:timedemo\\mainform.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{013C48C3-51F8-4442-A6AF-3D22A685962F}|TimeDemo\\TimeDemo.csproj|c:\\users\\sunng\\source\\repos\\timedemo\\timedemo\\usagetracker.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{013C48C3-51F8-4442-A6AF-3D22A685962F}|TimeDemo\\TimeDemo.csproj|solutionrelative:timedemo\\usagetracker.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{013C48C3-51F8-4442-A6AF-3D22A685962F}|TimeDemo\\TimeDemo.csproj|c:\\users\\sunng\\source\\repos\\timedemo\\timedemo\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{013C48C3-51F8-4442-A6AF-3D22A685962F}|TimeDemo\\TimeDemo.csproj|solutionrelative:timedemo\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{013C48C3-51F8-4442-A6AF-3D22A685962F}|TimeDemo\\TimeDemo.csproj|C:\\Users\\SUNNG\\source\\repos\\TimeDemo\\timedemo\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{013C48C3-51F8-4442-A6AF-3D22A685962F}|TimeDemo\\TimeDemo.csproj|solutionrelative:timedemo\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{013C48C3-51F8-4442-A6AF-3D22A685962F}|TimeDemo\\TimeDemo.csproj|c:\\users\\sunng\\source\\repos\\timedemo\\timedemo\\mainform.resx||{81828910-B8B3-4D2B-99A3-067027C180C1}",
+      "RelativeMoniker": "D:0:0:{013C48C3-51F8-4442-A6AF-3D22A685962F}|TimeDemo\\TimeDemo.csproj|solutionrelative:timedemo\\mainform.resx||{81828910-B8B3-4D2B-99A3-067027C180C1}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 3,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Resources.Designer.cs",
+              "DocumentMoniker": "C:\\Users\\SUNNG\\source\\repos\\TimeDemo\\TimeDemo\\Properties\\Resources.Designer.cs",
+              "RelativeDocumentMoniker": "TimeDemo\\Properties\\Resources.Designer.cs",
+              "ToolTip": "C:\\Users\\SUNNG\\source\\repos\\TimeDemo\\TimeDemo\\Properties\\Resources.Designer.cs",
+              "RelativeToolTip": "TimeDemo\\Properties\\Resources.Designer.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-24T14:30:38.421Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Resources.resx",
+              "DocumentMoniker": "C:\\Users\\SUNNG\\source\\repos\\TimeDemo\\TimeDemo\\Properties\\Resources.resx",
+              "RelativeDocumentMoniker": "TimeDemo\\Properties\\Resources.resx",
+              "ToolTip": "C:\\Users\\SUNNG\\source\\repos\\TimeDemo\\TimeDemo\\Properties\\Resources.resx",
+              "RelativeToolTip": "TimeDemo\\Properties\\Resources.resx",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001005|",
+              "WhenOpened": "2025-07-24T13:58:27.443Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\SUNNG\\source\\repos\\TimeDemo\\TimeDemo\\Program.cs",
+              "RelativeDocumentMoniker": "TimeDemo\\Program.cs",
+              "ToolTip": "C:\\Users\\SUNNG\\source\\repos\\TimeDemo\\TimeDemo\\Program.cs",
+              "RelativeToolTip": "TimeDemo\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-24T12:14:56.157Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "MainForm.Designer.cs",
+              "DocumentMoniker": "C:\\Users\\SUNNG\\source\\repos\\TimeDemo\\TimeDemo\\MainForm.Designer.cs",
+              "RelativeDocumentMoniker": "TimeDemo\\MainForm.Designer.cs",
+              "ToolTip": "C:\\Users\\SUNNG\\source\\repos\\TimeDemo\\TimeDemo\\MainForm.Designer.cs",
+              "RelativeToolTip": "TimeDemo\\MainForm.Designer.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAkwCoAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-24T12:16:43.779Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "MainForm.cs",
+              "DocumentMoniker": "C:\\Users\\SUNNG\\source\\repos\\TimeDemo\\TimeDemo\\MainForm.cs",
+              "RelativeDocumentMoniker": "TimeDemo\\MainForm.cs",
+              "ToolTip": "C:\\Users\\SUNNG\\source\\repos\\TimeDemo\\TimeDemo\\MainForm.cs",
+              "RelativeToolTip": "TimeDemo\\MainForm.cs",
+              "ViewState": "AgIAAMMAAAAAAAAAAAAswNQAAAA0AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-24T12:23:42.069Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "UsageTracker.cs",
+              "DocumentMoniker": "C:\\Users\\SUNNG\\source\\repos\\TimeDemo\\TimeDemo\\UsageTracker.cs",
+              "RelativeDocumentMoniker": "TimeDemo\\UsageTracker.cs",
+              "ToolTip": "C:\\Users\\SUNNG\\source\\repos\\TimeDemo\\TimeDemo\\UsageTracker.cs",
+              "RelativeToolTip": "TimeDemo\\UsageTracker.cs",
+              "ViewState": "AgIAACoAAAAAAAAAAAAcwCEAAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-24T12:17:38.033Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "DatabaseHelper.cs",
+              "DocumentMoniker": "C:\\Users\\SUNNG\\source\\repos\\TimeDemo\\TimeDemo\\DatabaseHelper.cs",
+              "RelativeDocumentMoniker": "TimeDemo\\DatabaseHelper.cs",
+              "ToolTip": "C:\\Users\\SUNNG\\source\\repos\\TimeDemo\\TimeDemo\\DatabaseHelper.cs",
+              "RelativeToolTip": "TimeDemo\\DatabaseHelper.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-24T12:15:28.039Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "TimeDemo",
+              "DocumentMoniker": "C:\\Users\\SUNNG\\source\\repos\\TimeDemo\\TimeDemo\\TimeDemo.csproj",
+              "RelativeDocumentMoniker": "TimeDemo\\TimeDemo.csproj",
+              "ToolTip": "C:\\Users\\SUNNG\\source\\repos\\TimeDemo\\TimeDemo\\TimeDemo.csproj",
+              "RelativeToolTip": "TimeDemo\\TimeDemo.csproj",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-07-24T13:58:04.331Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{56df62a4-05a3-4e5b-aa1a-99371ccfb997}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "BarChartControl.cs",
+              "DocumentMoniker": "C:\\Users\\SUNNG\\source\\repos\\TimeDemo\\TimeDemo\\BarChartControl.cs",
+              "RelativeDocumentMoniker": "TimeDemo\\BarChartControl.cs",
+              "ToolTip": "C:\\Users\\SUNNG\\source\\repos\\TimeDemo\\TimeDemo\\BarChartControl.cs",
+              "RelativeToolTip": "TimeDemo\\BarChartControl.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAcAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-24T12:20:12.948Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "MainForm.resx",
+              "DocumentMoniker": "C:\\Users\\SUNNG\\source\\repos\\TimeDemo\\TimeDemo\\MainForm.resx",
+              "RelativeDocumentMoniker": "TimeDemo\\MainForm.resx",
+              "ToolTip": "C:\\Users\\SUNNG\\source\\repos\\TimeDemo\\TimeDemo\\MainForm.resx",
+              "RelativeToolTip": "TimeDemo\\MainForm.resx",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001005|",
+              "WhenOpened": "2025-07-24T12:23:19.148Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "MainForm.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\SUNNG\\source\\repos\\TimeDemo\\TimeDemo\\MainForm.cs",
+              "RelativeDocumentMoniker": "TimeDemo\\MainForm.cs",
+              "ToolTip": "C:\\Users\\SUNNG\\source\\repos\\TimeDemo\\TimeDemo\\MainForm.cs [Design]",
+              "RelativeToolTip": "TimeDemo\\MainForm.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-24T12:11:20.467Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

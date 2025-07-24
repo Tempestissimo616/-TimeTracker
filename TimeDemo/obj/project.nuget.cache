@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "XO5iCj/CUW0=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\SUNNG\\source\\repos\\TimeDemo\\TimeDemo\\TimeDemo.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\SUNNG\\.nuget\\packages\\stub.system.data.sqlite.core.netstandard\\1.0.119\\stub.system.data.sqlite.core.netstandard.1.0.119.nupkg.sha512",
+    "C:\\Users\\SUNNG\\.nuget\\packages\\system.data.sqlite.core\\1.0.119\\system.data.sqlite.core.1.0.119.nupkg.sha512"
+  ],
+  "logs": []
+}
