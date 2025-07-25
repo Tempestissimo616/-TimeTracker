@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using Microsoft.Data.Sqlite;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -48,7 +49,7 @@ namespace DrawCardGame
         } // ✅ ← 这里加上这个括号
 
 
-        private void DrawCardButton_Click(object sender, RoutedEventArgs e)
+        private async void DrawCardButton_Click(object sender, RoutedEventArgs e)
         {
             if (hasDrawn) return;
 
@@ -60,6 +61,16 @@ namespace DrawCardGame
 
             hasDrawn = true; // 标记为已抽卡
             countdownTimer?.Stop(); // 如果点击了就不再等倒计时
+            SaveCardToDatabase(selected[0].Id);
+            SaveCardToDatabase(selected[1].Id);
+
+            var card1 = selected[0];
+            var card2 = selected[1];
+
+            await ShowCardsWithDelay(card1, card2);
+
+            //var popup = new DrawPopupWindow(card1.ImagePath, card2.ImagePath);
+            //popup.ShowDialog();
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -97,7 +108,7 @@ namespace DrawCardGame
 
 
         // ✅ 自动抽卡逻辑
-        private void AutoDrawCards()
+        private async void AutoDrawCards()
         {
             Random rand = new Random();
             var selected = CardLibrary.OrderBy(x => rand.Next()).Take(2).ToList();
@@ -106,8 +117,55 @@ namespace DrawCardGame
             Card2Image.Source = new BitmapImage(new Uri($"pack://application:,,,/{selected[1].ImagePath}"));
 
             hasDrawn = true;
+            SaveCardToDatabase(selected[0].Id);
+            SaveCardToDatabase(selected[1].Id);
+
+            var card1 = selected[0];
+            var card2 = selected[1];
+
+            await ShowCardsWithDelay(card1, card2);
+
+            //var popup = new DrawPopupWindow(card1.ImagePath, card2.ImagePath);
+            //popup.ShowDialog();
         }
 
+        private void OpenCardLibrary_Click(object sender, RoutedEventArgs e)
+        {
+            CardLibraryWindow cardLibraryWindow = new CardLibraryWindow();
+            cardLibraryWindow.Show(); // 使用 Show() 表示非模态窗口，ShowDialog() 是模态窗口
+        }
+
+        private void SaveCardToDatabase(int cardId)
+        {
+            using (var connection = new SqliteConnection("Data Source=user_cards.db"))
+            {
+                connection.Open();
+
+                var command = connection.CreateCommand();
+                command.CommandText = @"
+            INSERT OR IGNORE INTO OwnedCards (CardId) 
+            VALUES ($id);";
+                command.Parameters.AddWithValue("$id", cardId);
+
+                command.ExecuteNonQuery();
+            }
+        }
+        private async Task ShowCardsWithDelay(Card card1, Card card2)
+        {
+            Card1Image.Source = null;
+            Card2Image.Source = null;
+
+            await Task.Delay(5000);
+            Card1Image.Source = new BitmapImage(new Uri($"pack://application:,,,/{card1.ImagePath}"));
+
+            Card2Image.Source = new BitmapImage(new Uri($"pack://application:,,,/{card2.ImagePath}"));
+
+            //var popup = new DrawPopupWindow(card1.ImagePath, card2.ImagePath);
+            //popup.ShowDialog();
+        }
 
     }
+
+
+  
 }

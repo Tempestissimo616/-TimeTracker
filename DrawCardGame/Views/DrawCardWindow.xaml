@@ -32,7 +32,7 @@
                 Width="160" Height="50"
                 HorizontalAlignment="Left"
                 VerticalAlignment="Bottom"
-                Margin="412,0,0,84"
+                Margin="388,0,0,84"
                 FontSize="18"
                 Click="DrawCardButton_Click"/>
 
@@ -69,6 +69,7 @@
                Height="300"
                VerticalAlignment="Top"
                Margin="316,355,316,0"/>
+        <Button Content="卡片库" HorizontalAlignment="Left" Margin="47,143,0,0" VerticalAlignment="Top" Height="61" Width="111" Click="OpenCardLibrary_Click"/>
     </Grid>
 </Window>
 

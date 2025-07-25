@@ -1,0 +1,24 @@
+﻿<Window x:Class="DrawCardGame.DrawPopupWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="抽卡结果" Height="300" Width="300" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <StackPanel Orientation="Horizontal" Margin="0,30,0,0" HorizontalAlignment="Center">
+                <Image x:Name="Card1Image" Width="60" Height="90" Margin="0,-70,5,10"/>
+                <Image Source="pack://application:,,,/Assets/70cb140ab63a37e7d6e669d5ef1c698453520970.png"
+                       Width="130" Height="130" Margin="10,60,10,0" VerticalAlignment="Top"/>
+                <Image x:Name="Card2Image" Width="60" Height="90" Margin="5,-70,0,10"/>
+            </StackPanel>
+
+            <Button Content="关闭" Click="Close_Click" Width="80" Height="30"
+                    Margin="0,0,0,0" HorizontalAlignment="Center"/>
+        </StackPanel>
+    </Grid>
+</Window>
+
+
+
+
+
+

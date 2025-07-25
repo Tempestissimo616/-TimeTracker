@@ -1,12 +1,21 @@
 ﻿<Window x:Class="DrawCardGame.CardLibraryWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:DrawCardGame"
-        mc:Ignorable="d"
-        Title="CardLibraryWindow" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+        Title="卡牌图鉴" Height="600" Width="800" Loaded="Window_Loaded">
+
+    <DockPanel>
+        <!-- 顶部按钮 -->
+        <StackPanel Orientation="Horizontal" DockPanel.Dock="Top" HorizontalAlignment="Right" Margin="10">
+            <Button Content="清空卡片数据" Click="ClearCards_Click" Padding="10,5" Margin="0,0,10,0"/>
+        </StackPanel>
+
+        <!-- 滚动区域展示卡片 -->
+        <ScrollViewer VerticalScrollBarVisibility="Auto">
+            <WrapPanel x:Name="CardWrapPanel" Orientation="Horizontal" Margin="10" HorizontalAlignment="Center" />
+        </ScrollViewer>
+    </DockPanel>
+
 </Window>
+
+
+
