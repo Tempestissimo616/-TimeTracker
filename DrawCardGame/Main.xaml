@@ -1,0 +1,20 @@
+﻿<Window x:Class="DrawCardGame.Main"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="主菜单" Height="300" Width="400"
+        WindowStartupLocation="CenterScreen">
+
+    <Grid>
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+            <Button Content="进入抽卡界面"
+                    Width="150" Height="40" Margin="0,0,0,10"
+                    Click="OpenDrawWindow_Click"/>
+
+            <Button Content="查看卡片图鉴"
+                    Width="150" Height="40"
+                    Click="OpenLibraryWindow_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>
+
+

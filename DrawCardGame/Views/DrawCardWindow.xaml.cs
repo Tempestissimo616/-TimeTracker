@@ -32,7 +32,7 @@ namespace DrawCardGame
 
         // ✅ 倒计时相关变量
         private DispatcherTimer countdownTimer;
-        private int secondsLeft = 30;
+        private int secondsLeft = 3000;
 
         // ✅ 是否已抽卡标志
         private bool hasDrawn = false;

@@ -2,7 +2,8 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:DrawCardGame"
-             StartupUri="Views/DrawCardWindow.xaml">
+             StartupUri="Main.xaml">
+
     <Application.Resources>
          
     </Application.Resources>
