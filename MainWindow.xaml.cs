@@ -16,5 +16,9 @@ namespace Wallet_Payment
                 this.DragMove();
         }
 
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
