@@ -3,7 +3,7 @@ const TEN_SECONDS_MS = 10 * 1000;
 const FOCUSED_CHECK_MS = 1000;
 const RENOTIFY_MS = 10 * 1000;
 const RECONNECTFAIL_SLEEP = 5;
-const WSURL = 'ws://localhost:8080';
+const WSURL = 'ws://localhost:8081';
 
 let webSocket = null;
 let isConnected = false;
@@ -34,7 +34,7 @@ function init() {
 
 function connect() {
     webSocket = new WebSocket(WSURL);
-    
+
     webSocket.onopen = (event) => {
         isConnected = true;
         isSleep = false;
@@ -43,7 +43,7 @@ function connect() {
         keepAlive();
         console.log("WebSocket connected!");
     };
-    
+
     webSocket.onmessage = (event) => {
         console.log(event.data);
         if (event.data === 'sleep') {
@@ -55,7 +55,7 @@ function connect() {
             console.log("Wake up");
         }
     };
-    
+
     webSocket.onclose = (event) => {
         isConnected = false;
         console.warn('WebSocket disconnected...');
@@ -167,7 +167,7 @@ function getCurrentTab() {
 
 function onActivePage(tab) {
     if (isSleep) return;
-    
+
     if (activePage && activePage.url) {
         if (activePage.url !== tab.url) {
             calDuration();
