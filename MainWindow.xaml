@@ -49,10 +49,7 @@
 
             <!--Main Menu-->
             <StackPanel Width="240">
-                <StackPanel Orientation="Horizontal" Margin="0 50 20 40" HorizontalAlignment="Center">
-                    <fa:ImageAwesome Icon="CheckCircle" Foreground="White" Width="30"/>
-                    <TextBlock Text="Wally" FontWeight="Bold" FontSize="20" VerticalAlignment="Center" Margin="10 0 0 0" Foreground="#FFFFFF"/>
-                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0 50 20 40" HorizontalAlignment="Center"/>
 
                 <Button Style="{StaticResource activeMenuButton}">
                     <Grid>
@@ -154,7 +151,7 @@
             <!--Transaction Panel-->
             <Grid Grid.Column="1">
                 <!--Transfer Panel-->
-                <Border Style="{StaticResource border}" Margin="20 120 20 20">
+                <Border Style="{StaticResource border}" Margin="20,120,20,0" Height="524">
                     <StackPanel Margin="10 88 10 20">
 
                         <Grid Margin="0 12 0 22">
@@ -230,27 +227,51 @@
                         </Grid.RowDefinitions>
                     </Grid>
                 </Border>
+                <Border Style="{StaticResource border}" Height="266" Margin="0,30,0,0">
+                    <ScrollViewer VerticalScrollBarVisibility="Hidden">
+                        <ItemsControl x:Name="UsageList">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid Margin="0 12 0 12">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="40"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="80"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                        </Grid.RowDefinitions>
+                                        <!-- 图标 -->
+                                        <Image Grid.RowSpan="2" Grid.Column="0" Width="32" Height="32"
+       Source="{Binding Icon}" VerticalAlignment="Center" Margin="-4,0,5,0"/>
+                                        <!-- 应用名 -->
+                                        <TextBlock Grid.Column="1" Grid.Row="0" Text="{Binding ProcessName}" 
+                                   FontSize="13" FontWeight="Bold" Foreground="#E0E0E0" Margin="0,0,0,2"/>
+                                        <!-- 进度条 -->
+                                        <Border Grid.Column="1" Grid.Row="1" Height="18" CornerRadius="6" Background="#22223A" BorderBrush="#444466" BorderThickness="1" Margin="0,0,24,0">
+                                            <Grid>
+                                                <Rectangle Fill="#4ADE80"
+                                           RadiusX="6" RadiusY="6"
+                                           HorizontalAlignment="Left"
+                                           Height="18"
+                                           Width="{Binding Duration, Converter={StaticResource BarWidthConverter}}"/>
+                                            </Grid>
+                                        </Border>
+                                        <!-- 时长 -->
+                                        <TextBlock Grid.Column="2" Grid.RowSpan="2"  Text="{Binding DurationText}" 
+           VerticalAlignment="Center" HorizontalAlignment="Right"
+           Foreground="#E0E0E0" FontSize="12" FontWeight="Heavy" Margin="0,0,20,-5" />
+                                    </Grid>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </ScrollViewer>
+                </Border>
 
                 <!--Security Card-->
-                <Border Style="{StaticResource border}" Margin="20 0 20 0" Height="208">
-                    <Grid Margin="15 10">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="auto"/>
-                            <ColumnDefinition Width="auto"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="*"/>
-                        </Grid.RowDefinitions>
 
-                        <fa:ImageAwesome Icon="Shield" Style="{StaticResource whiteIcon}" Grid.Row="1" VerticalAlignment="Center" />
-                        <fa:ImageAwesome Icon="Key" Style="{StaticResource whiteIcon}" Grid.Row="2" VerticalAlignment="Center" />
-                        <fa:ImageAwesome Icon="Lock" Style="{StaticResource whiteIcon}" Grid.Row="3" VerticalAlignment="Center" />
-                    </Grid>
-                </Border>
+                <!--Usage Tracker Card-->
 
             </StackPanel>
 
