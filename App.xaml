@@ -313,6 +313,57 @@
                 </Setter.Value>
             </Setter>
         </Style>
+        <Style x:Key="FocusModeItemStyle" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="#fff"/>
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="Margin" Value="0,4,0,4"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Padding" Value="4"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#444466"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="FocusButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="#2D254A"/>
+            <Setter Property="Foreground" Value="#fff"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="Height" Value="48"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Padding" Value="8"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" CornerRadius="8">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#3B2E58"/>
+                </Trigger>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Background" Value="#1B7F3A"/>
+                    <!-- 深绿色 -->
+                    <Setter Property="Foreground" Value="#fff"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <DataTemplate x:Key="AppListBoxItemTemplate">
+            <StackPanel Orientation="Horizontal" Margin="0,2,0,2">
+                <Image Source="{Binding Icon}" Width="20" Height="20" Margin="0,0,8,0"/>
+                <TextBlock Text="{Binding Name}" Foreground="#fff" FontSize="14"/>
+            </StackPanel>
+        </DataTemplate>
+
         <local:BarWidthConverter x:Key="BarWidthConverter"/>
 
     </Application.Resources>
