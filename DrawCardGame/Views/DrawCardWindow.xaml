@@ -5,16 +5,27 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DrawCardGame"
         mc:Ignorable="d"
-        Title="DrawCardWindow" Height="1000" Width="1000">
+        Title="DrawCardWindow" Height="1000" Width="1000"
+        Loaded="Window_Loaded">
 
     <Grid Margin="0,0,68,-5">
         <!-- 顶部标题 -->
         <TextBlock HorizontalAlignment="Center"
-                   Margin="0,38,0,0"
-                   TextWrapping="Wrap"
-                   VerticalAlignment="Top"
-                   FontSize="36"
-                   Text="获得奖励"/>
+           Margin="0,38,0,0"
+           TextWrapping="Wrap"
+           VerticalAlignment="Top"
+           FontSize="36"
+           Text="获得奖励"/>
+
+        <!-- ✅ 倒计时文字 -->
+        <TextBlock x:Name="CountdownText"
+           FontSize="20"
+           HorizontalAlignment="Center"
+           VerticalAlignment="Top"
+           Margin="0,85,0,0"
+           Text="请在 30 秒内抽卡"
+           Foreground="Red"/>
+
 
         <!-- 图片下方按钮 -->
         <Button Content="开始抽卡"

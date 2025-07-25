@@ -8,6 +8,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace DrawCardGame
 {
@@ -23,8 +24,18 @@ namespace DrawCardGame
         {
             new Card { Id = 1, Name = "Cat", ImagePath = "Images/card_cat.png" },
             new Card { Id = 2, Name = "Pikachu", ImagePath = "Images/card_pikachu.png" },
+            new Card { Id = 3, Name = "Dog", ImagePath = "Images/card_dog.png" },
+            new Card { Id = 4, Name = "Rabbit", ImagePath = "Images/card_rabbit.png" },
             // 更多卡片...
         };
+
+        // ✅ 倒计时相关变量
+        private DispatcherTimer countdownTimer;
+        private int secondsLeft = 30;
+
+        // ✅ 是否已抽卡标志
+        private bool hasDrawn = false;
+
         private void TestCardLibrary()
         {
             StringBuilder sb = new StringBuilder();
@@ -34,18 +45,67 @@ namespace DrawCardGame
             }
 
             MessageBox.Show(sb.ToString(), "卡牌库内容测试");
-        }
+        } // ✅ ← 这里加上这个括号
+
+
         private void DrawCardButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (hasDrawn) return;
+
+            Random rand = new Random();
+            var selected = CardLibrary.OrderBy(x => rand.Next()).Take(2).ToList();
+
+            Card1Image.Source = new BitmapImage(new Uri($"pack://application:,,,/{selected[0].ImagePath}"));
+            Card2Image.Source = new BitmapImage(new Uri($"pack://application:,,,/{selected[1].ImagePath}"));
+
+            hasDrawn = true; // 标记为已抽卡
+            countdownTimer?.Stop(); // 如果点击了就不再等倒计时
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            countdownTimer = new DispatcherTimer();
+            countdownTimer.Interval = TimeSpan.FromSeconds(1);
+            countdownTimer.Tick += CountdownTimer_Tick;
+            countdownTimer.Start();
+        }
+
+        private void CountdownTimer_Tick(object sender, EventArgs e)
+        {
+            secondsLeft--;
+
+            CountdownText.Text = $"请在 {secondsLeft} 秒内抽卡";
+
+            if (secondsLeft == 1 && !hasDrawn)
+            {
+                AutoDrawCards(); // 自动抽卡
+            }
+
+            if (secondsLeft <= 0)
+            {
+                countdownTimer.Stop();
+
+                // 弹出对话框，用户确认后关闭窗口
+                MessageBoxResult result = MessageBox.Show("本次抽卡已结束。点击确定关闭窗口。", "提示", MessageBoxButton.OK);
+
+                if (result == MessageBoxResult.OK)
+                {
+                    this.Close(); // 关闭窗口
+                }
+            }
+        }
+
+
+        // ✅ 自动抽卡逻辑
+        private void AutoDrawCards()
         {
             Random rand = new Random();
             var selected = CardLibrary.OrderBy(x => rand.Next()).Take(2).ToList();
 
-            // TODO：将 selected[0] 和 selected[1] 显示在界面的卡片框中
-            Card1Image.Source = new BitmapImage(new Uri("pack://application:,,,/Images/card_cat.png"));
+            Card1Image.Source = new BitmapImage(new Uri($"pack://application:,,,/{selected[0].ImagePath}"));
+            Card2Image.Source = new BitmapImage(new Uri($"pack://application:,,,/{selected[1].ImagePath}"));
 
-            Card2Image.Source = new BitmapImage(new Uri("pack://application:,,,/Images/card_pikachu.png"));
-
-
+            hasDrawn = true;
         }
 
 

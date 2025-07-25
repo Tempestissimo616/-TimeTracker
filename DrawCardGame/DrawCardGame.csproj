@@ -11,7 +11,9 @@
   <ItemGroup>
     <None Remove="Assets\70cb140ab63a37e7d6e669d5ef1c698453520970.png" />
     <None Remove="Images\card_cat.png" />
+    <None Remove="Images\card_dog.png" />
     <None Remove="Images\card_pikachu.png" />
+    <None Remove="Images\card_rabbit.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -21,7 +23,13 @@
     <Resource Include="Images\card_cat.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Images\card_dog.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Images\card_pikachu.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\card_rabbit.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>
