@@ -22,6 +22,7 @@ namespace DrawCardGame
         public CardLibraryWindow()
         {
             InitializeComponent();
+            
         }
     }
 }
