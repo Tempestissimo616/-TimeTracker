@@ -1,0 +1,20 @@
+# 忽略 Visual Studio 文件
+.vs/
+*.user
+*.suo
+*.cache
+
+# 忽略构建输出
+bin/
+obj/
+*.dll
+*.exe
+*.pdb
+
+# 忽略 VS Code 设置（如果你也用 VS Code）
+.vscode/
+
+# 忽略临时文件
+*.log
+*.tmp
+*.bak
