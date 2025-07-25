@@ -1,20 +1,25 @@
 {
-  "manifest_version": 3,
-  "name": "Time Tracker",
-  "version": "1.0",
-  "description": "Track webpage usage time and send to WPF backend",
-  "permissions": [
-    "activeTab",
-    "tabs",
-    "storage"
-  ],
-  "background": {
-    "service_worker": "background.js"
-  },
-  "content_scripts": [
-    {
-      "matches": ["<all_urls>"],
-      "js": ["content.js"]
-    }
-  ]
+    "manifest_version": 3,
+    "name": "Time Tracker",
+    "version": "1.0",
+    "description": "Track webpage usage time with detailed information",
+    "permissions": [
+        "activeTab",
+        "tabs",
+        "storage",
+        "favicon"
+    ],
+    "background": {
+        "service_worker": "background.js"
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "<all_urls>"
+            ],
+            "js": [
+                "content.js"
+            ]
+        }
+    ]
 }
