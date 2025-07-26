@@ -9,13 +9,18 @@
             font-family: Arial, sans-serif;
         }
         .status {
-            margin-bottom: 10px;
+            margin-bottom: 15px;
+            padding: 10px;
+            border-radius: 5px;
+            background-color: #f5f5f5;
         }
         .connected {
             color: green;
+            font-weight: bold;
         }
         .disconnected {
             color: red;
+            font-weight: bold;
         }
         button {
             padding: 8px 16px;
@@ -23,25 +28,42 @@
             border: none;
             border-radius: 4px;
             cursor: pointer;
+            font-size: 14px;
         }
         .primary {
             background-color: #4CAF50;
             color: white;
         }
-        .secondary {
-            background-color: #f44336;
+        .primary:hover {
+            background-color: #45a049;
+        }
+        .reconnect {
+            background-color: #ff9800;
             color: white;
+        }
+        .reconnect:hover {
+            background-color: #f57c00;
+        }
+        #currentPage {
+            margin: 15px 0;
+            padding: 10px;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+            border-left: 4px solid #2196F3;
+        }
+        #currentPage p {
+            margin: 5px 0;
         }
     </style>
 </head>
 <body>
-    <h3>⏱️ Time Tracker</h3>
+    <h3>🌊 ZenFlow</h3>
     <div id="status" class="status">检查连接状态...</div>
     <div id="currentPage"></div>
     <div>
-        <button id="connectBtn" class="primary">连接服务器</button>
-        <button id="disconnectBtn" class="secondary">断开连接</button>
+        <button id="connectBtn" class="primary">重新连接</button>
     </div>
     <script src="popup.js"></script>
 </body>
 </html>
+

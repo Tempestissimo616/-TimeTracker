@@ -1,20 +1,20 @@
-// 配置常量
+// ZenFlow 配置常量
 const TEN_SECONDS_MS = 10 * 1000;
 const FOCUSED_CHECK_MS = 1000;
 const RENOTIFY_MS = 10 * 1000;
 const RECONNECTFAIL_SLEEP = 5;
-const WSURL = 'ws://localhost:9000';
+const ZENFLOW_WSURL = 'ws://localhost:9000';
 
-let webSocket = null;
-let isConnected = false;
+let zenFlowWebSocket = null;
+let isZenFlowConnected = false;
 let isChromeFocused = true;
 let autoReConnectIntervalId = null;
-let isSleep = false;
+let isZenFlowSleep = false;
 let reconnectFail = 0;
-let notifyFailList = [];
+let zenFlowNotifyFailList = [];
 
 // 焦点网页数据
-let activePage = {
+let zenFlowActivePage = {
     url: '',
     title: '',
     icon: '',
@@ -24,42 +24,42 @@ let activePage = {
     duration: 0
 };
 
-init();
+initZenFlow();
 
-function init() {
-    connect();
+function initZenFlow() {
+    connectZenFlow();
     startWatchFocus();
     startRenotify();
 }
 
-function connect() {
-    webSocket = new WebSocket(WSURL);
+function connectZenFlow() {
+    zenFlowWebSocket = new WebSocket(ZENFLOW_WSURL);
 
-    webSocket.onopen = (event) => {
-        isConnected = true;
-        isSleep = false;
+    zenFlowWebSocket.onopen = (event) => {
+        isZenFlowConnected = true;
+        isZenFlowSleep = false;
         reconnectFail = 0;
         clearInterval(autoReConnectIntervalId);
-        keepAlive();
-        console.log("WebSocket connected!");
+        keepZenFlowAlive();
+        console.log("ZenFlow WebSocket connected!");
     };
 
-    webSocket.onmessage = (event) => {
+    zenFlowWebSocket.onmessage = (event) => {
         console.log(event.data);
         if (event.data === 'sleep') {
-            isSleep = true;
+            isZenFlowSleep = true;
             calDuration();
-            console.log("Sleep mode");
+            console.log("ZenFlow Sleep mode");
         } else if (event.data === 'wake') {
-            isSleep = false;
-            console.log("Wake up");
+            isZenFlowSleep = false;
+            console.log("ZenFlow Wake up");
         }
     };
 
-    webSocket.onclose = (event) => {
-        isConnected = false;
-        console.warn('WebSocket disconnected...');
-        webSocket = null;
+    zenFlowWebSocket.onclose = (event) => {
+        isZenFlowConnected = false;
+        console.warn('ZenFlow WebSocket disconnected...');
+        zenFlowWebSocket = null;
         startAutoReConnect();
     };
 }
@@ -67,49 +67,49 @@ function connect() {
 function startAutoReConnect() {
     clearInterval(autoReConnectIntervalId);
     autoReConnectIntervalId = setInterval(() => {
-        if (!isConnected) {
-            console.log("Attempting to reconnect...");
-            connect();
+        if (!isZenFlowConnected) {
+            console.log("ZenFlow attempting to reconnect...");
+            connectZenFlow();
             reconnectFail++;
-            if (reconnectFail >= RECONNECTFAIL_SLEEP && !isSleep) {
-                isSleep = true;
+            if (reconnectFail >= RECONNECTFAIL_SLEEP && !isZenFlowSleep) {
+                isZenFlowSleep = true;
             }
         }
     }, TEN_SECONDS_MS);
 }
 
-function keepAlive() {
+function keepZenFlowAlive() {
     const keepAliveIntervalId = setInterval(() => {
-        if (isConnected && webSocket) {
-            console.log('ping');
-            webSocket.send('ping');
+        if (isZenFlowConnected && zenFlowWebSocket) {
+            console.log('ZenFlow ping');
+            zenFlowWebSocket.send('ping');
         } else {
             clearInterval(keepAliveIntervalId);
         }
     }, TEN_SECONDS_MS);
 }
 
-function notifyServer(data) {
-    console.log("notify", data);
-    if (isConnected && webSocket) {
-        webSocket.send(JSON.stringify(data));
+function notifyZenFlowServer(data) {
+    console.log("ZenFlow notify", data);
+    if (isZenFlowConnected && zenFlowWebSocket) {
+        zenFlowWebSocket.send(JSON.stringify(data));
     } else {
-        notifyFailList.push(data);
-        console.log("failList", notifyFailList);
+        zenFlowNotifyFailList.push(data);
+        console.log("ZenFlow failList", zenFlowNotifyFailList);
     }
 }
 
-function renotify() {
-    if (isConnected && webSocket && notifyFailList.length > 0) {
-        const item = notifyFailList[0];
-        notifyFailList.splice(0, 1);
-        notifyServer(item);
+function renotifyZenFlow() {
+    if (isZenFlowConnected && zenFlowWebSocket && zenFlowNotifyFailList.length > 0) {
+        const item = zenFlowNotifyFailList[0];
+        zenFlowNotifyFailList.splice(0, 1);
+        notifyZenFlowServer(item);
     }
 }
 
 function startRenotify() {
     setInterval(() => {
-        renotify();
+        renotifyZenFlow();
     }, RENOTIFY_MS);
 }
 
@@ -126,16 +126,30 @@ chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
 });
 
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
-    if (message.type === 'TIME_UPDATE') {
-        if (activePage && activePage.url) {
+    if (message.type === 'ZENFLOW_TIME_UPDATE') {
+        if (zenFlowActivePage && zenFlowActivePage.url) {
             // 将毫秒转换为秒
-            // 将毫秒转换为秒Math.round( / 1000)
-            activePage.duration += Math.round(message.timeSpent / 1000);
+            zenFlowActivePage.duration += Math.round(message.timeSpent / 1000);
         }
-    } else if (message.type === 'TITLE_UPDATE') {
-        if (activePage && activePage.url) {
-            activePage.title = message.title;
+    } else if (message.type === 'ZENFLOW_TITLE_UPDATE') {
+        if (zenFlowActivePage && zenFlowActivePage.url) {
+            zenFlowActivePage.title = message.title;
         }
+    } else if (message.type === 'GET_ZENFLOW_STATUS') {
+        // 返回当前状态给弹出页面
+        sendResponse({
+            isConnected: isZenFlowConnected,
+            isChromeFocused: isChromeFocused,
+            isSleep: isZenFlowSleep,
+            activePage: zenFlowActivePage,
+            reconnectFail: reconnectFail
+        });
+        return true; // 保持消息通道开放
+    } else if (message.type === 'ZENFLOW_CONNECT') {
+        console.log('收到ZenFlow连接请求');
+        connectZenFlow();
+        sendResponse({success: true});
+        return true;
     }
 });
 
@@ -168,15 +182,15 @@ function getCurrentTab() {
 }
 
 function onActivePage(tab) {
-    if (isSleep) return;
+    if (isZenFlowSleep) return;
 
-    if (activePage && activePage.url) {
-        if (activePage.url !== tab.url) {
+    if (zenFlowActivePage && zenFlowActivePage.url) {
+        if (zenFlowActivePage.url !== tab.url) {
             calDuration();
             setActive(tab);
         } else {
             // 同一个页面，更新页面开始时间（用于焦点切换）
-            activePage.pageStartTime = Date.now();
+            zenFlowActivePage.pageStartTime = Date.now();
         }
     } else {
         setActive(tab);
@@ -186,7 +200,7 @@ function onActivePage(tab) {
 function setActive(tab) {
     const { url, title, favIconUrl: icon } = tab;
     if (url && !url.startsWith('chrome://')) {
-        activePage = {
+        zenFlowActivePage = {
             url,
             title: title || '',
             icon: icon || '',
@@ -197,39 +211,39 @@ function setActive(tab) {
             pageStartTime: Date.now() // 添加页面开始时间戳
         };
     } else {
-        activePage = null;
+        zenFlowActivePage = null;
     }
 }
 
 function calDuration() {
-    if (activePage && activePage.url) {
+    if (zenFlowActivePage && zenFlowActivePage.url) {
         const endTime = new Date().toISOString();
         
         // 计算当前会话的时长（秒）
-        const currentSessionDuration = activePage.pageStartTime ? 
-            Math.round((Date.now() - activePage.pageStartTime) / 1000) : 0;
+        const currentSessionDuration = zenFlowActivePage.pageStartTime ? 
+            Math.round((Date.now() - zenFlowActivePage.pageStartTime) / 1000) : 0;
         
         // 总时长 = 之前累积的时长 + 当前会话时长
-        const totalDuration = activePage.duration + currentSessionDuration;
+        const totalDuration = zenFlowActivePage.duration + currentSessionDuration;
         
         const data = {
-            url: activePage.url,
-            title: activePage.title,
-            icon: activePage.icon,
-            domain: activePage.domain,
-            startTime: activePage.startTime,
+            url: zenFlowActivePage.url,
+            title: zenFlowActivePage.title,
+            icon: zenFlowActivePage.icon,
+            domain: zenFlowActivePage.domain,
+            startTime: zenFlowActivePage.startTime,
             endTime: endTime,
             duration: totalDuration // 现在是秒为单位
         };
         
-        console.log(`页面 ${activePage.domain} 总时长: ${totalDuration}秒`);
-        activePage = null;
-        notifyServer(data);
+        console.log(`ZenFlow页面 ${zenFlowActivePage.domain} 总时长: ${totalDuration}秒`);
+        zenFlowActivePage = null;
+        notifyZenFlowServer(data);
     }
 }
 
 function startWatchFocus() {
-    console.log("开始监听焦点");
+    console.log("ZenFlow开始监听焦点");
     setInterval(async () => {
         const focused = await isFocused();
         if (focused) {
@@ -237,13 +251,13 @@ function startWatchFocus() {
                 isChromeFocused = true;
                 const tab = await getCurrentTab();
                 onActivePage(tab);
-                console.warn("重置统计");
+                console.warn("ZenFlow重置统计");
             }
         } else {
             if (isChromeFocused) {
                 isChromeFocused = false;
                 calDuration();
-                console.warn("更新时间");
+                console.warn("ZenFlow更新时间");
             }
         }
     }, FOCUSED_CHECK_MS);
@@ -253,12 +267,6 @@ function startWatchFocus() {
 chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
     if (tabs[0]) {
         onActivePage(tabs[0]);
-   
- }
+    }
 });
-
-
-
-
-
 

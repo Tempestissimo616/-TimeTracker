@@ -1,55 +1,56 @@
-let pageStartTime = Date.now();
-let isPageVisible = !document.hidden;
-let totalTimeSpent = 0;
+let zenFlowPageStartTime = Date.now();
+let isZenFlowPageVisible = !document.hidden;
+let zenFlowTotalTimeSpent = 0;
 
 // 监听页面可见性变化
 document.addEventListener('visibilitychange', () => {
     if (document.hidden) {
-        if (isPageVisible) {
-            const timeSpent = Date.now() - pageStartTime;
-            totalTimeSpent += timeSpent;
-            sendTimeToBackground(timeSpent);
-            isPageVisible = false;
+        if (isZenFlowPageVisible) {
+            const timeSpent = Date.now() - zenFlowPageStartTime;
+            zenFlowTotalTimeSpent += timeSpent;
+            sendZenFlowTimeToBackground(timeSpent);
+            isZenFlowPageVisible = false;
         }
     } else {
-        pageStartTime = Date.now();
-        isPageVisible = true;
+        zenFlowPageStartTime = Date.now();
+        isZenFlowPageVisible = true;
     }
 });
 
 // 页面卸载时发送数据
 window.addEventListener('beforeunload', () => {
-    if (isPageVisible) {
-        const timeSpent = Date.now() - pageStartTime;
-        totalTimeSpent += timeSpent;
-        sendTimeToBackground(timeSpent);
+    if (isZenFlowPageVisible) {
+        const timeSpent = Date.now() - zenFlowPageStartTime;
+        zenFlowTotalTimeSpent += timeSpent;
+        sendZenFlowTimeToBackground(timeSpent);
     }
 });
 
 // 监听标题变化
-let lastTitle = document.title;
-const titleObserver = new MutationObserver(() => {
-    if (document.title !== lastTitle) {
-        lastTitle = document.title;
+let zenFlowLastTitle = document.title;
+const zenFlowTitleObserver = new MutationObserver(() => {
+    if (document.title !== zenFlowLastTitle) {
+        zenFlowLastTitle = document.title;
         chrome.runtime.sendMessage({
-            type: 'TITLE_UPDATE',
+            type: 'ZENFLOW_TITLE_UPDATE',
             title: document.title
         });
     }
 });
 
 if (document.querySelector('title') || document.head) {
-    titleObserver.observe(document.querySelector('title') || document.head, {
+    zenFlowTitleObserver.observe(document.querySelector('title') || document.head, {
         childList: true,
         subtree: true
     });
 }
 
-function sendTimeToBackground(timeSpent) {
+function sendZenFlowTimeToBackground(timeSpent) {
     chrome.runtime.sendMessage({
-        type: 'TIME_UPDATE',
+        type: 'ZENFLOW_TIME_UPDATE',
         timeSpent: timeSpent,
-        totalTime: totalTimeSpent
+        totalTime: zenFlowTotalTimeSpent
     });
 }
+
 
