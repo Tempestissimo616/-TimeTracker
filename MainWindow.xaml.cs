@@ -104,7 +104,7 @@ namespace Wallet_Payment
                 }
             }
             catch { }
-            return null;
+            return new BitmapImage(new Uri("pack://application:,,,/MainWindowImage/slogan.png"));
         }
 
         [DllImport("Shell32.dll", CharSet = CharSet.Auto)]
@@ -526,7 +526,7 @@ namespace Wallet_Payment
                 {
                     Title = "测试网站",
                     Domain = "example.com",
-                    Duration = "5分钟"
+                    Duration = "5"
                 };
 
                 DatabaseHelper.AddWebTimeTracking(testData);
@@ -634,9 +634,9 @@ namespace Wallet_Payment
         private void AppStatsButton_Click(object sender, RoutedEventArgs e)
         {
             // 切换到应用统计
-            AppStatsButton.Background = new SolidColorBrush(System.Windows.Media.Color.FromRgb(0x4A, 0xDE, 0x80)); // #4ADE80
+            AppStatsButton.Background = new SolidColorBrush(System.Windows.Media.Color.FromRgb(0x7E, 0xD9, 0x57)); // #7ED957
             AppStatsButton.Foreground = new SolidColorBrush(System.Windows.Media.Color.FromRgb(0x1A, 0x1A, 0x2E)); // #1A1A2E
-            WebStatsButton.Background = new SolidColorBrush(System.Windows.Media.Color.FromRgb(0x3B, 0x2E, 0x58)); // #3B2E58
+            WebStatsButton.Background = new SolidColorBrush(System.Windows.Media.Color.FromRgb(0x2D, 0x2D, 0x2C)); // #2D2D2C
             WebStatsButton.Foreground = new SolidColorBrush(System.Windows.Media.Color.FromRgb(0xE0, 0xE0, 0xE0)); // #E0E0E0
 
             AppStatsContent.Visibility = Visibility.Visible;
@@ -646,14 +646,23 @@ namespace Wallet_Payment
         private void WebStatsButton_Click(object sender, RoutedEventArgs e)
         {
             // 切换到网站统计
-            WebStatsButton.Background = new SolidColorBrush(System.Windows.Media.Color.FromRgb(0x4A, 0xDE, 0x80)); // #4ADE80
+            WebStatsButton.Background = new SolidColorBrush(System.Windows.Media.Color.FromRgb(0x7E, 0xD9, 0x57)); // #7ED957
             WebStatsButton.Foreground = new SolidColorBrush(System.Windows.Media.Color.FromRgb(0x1A, 0x1A, 0x2E)); // #1A1A2E
-            AppStatsButton.Background = new SolidColorBrush(System.Windows.Media.Color.FromRgb(0x3B, 0x2E, 0x58)); // #3B2E58
+            AppStatsButton.Background = new SolidColorBrush(System.Windows.Media.Color.FromRgb(0x2D, 0x2D, 0x2C)); // #2D2D2C
             AppStatsButton.Foreground = new SolidColorBrush(System.Windows.Media.Color.FromRgb(0xE0, 0xE0, 0xE0)); // #E0E0E0
 
             AppStatsContent.Visibility = Visibility.Collapsed;
             WebStatsContent.Visibility = Visibility.Visible;
         }
 
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

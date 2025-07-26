@@ -217,7 +217,25 @@ namespace Wallet_Payment
         public string EndTime { get; set; }
         public string Icon { get; set; }
         public string Duration { get; set; }
+
+        public string DurationDisplay
+        {
+            get
+            {
+                if (string.IsNullOrEmpty(Duration)) return "0秒";
+                if (!int.TryParse(Duration, out int seconds)) return Duration;
+
+                if (seconds < 60)
+                    return $"{seconds}秒";
+                else if (seconds < 3600)
+                    return $"{seconds / 60}分{seconds % 60}秒";
+                else
+                    return $"{seconds / 3600}小时{(seconds % 3600) / 60}分{seconds % 60}秒";
+            }
+        }
     }
+
+
 
     public static class JsonElementExtensions
     {

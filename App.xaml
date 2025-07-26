@@ -7,7 +7,35 @@
     <Application.Resources>
 
 
-        <Style x:Key="menuButton" TargetType="Button">
+        <!-- 全局按钮样式，影响所有Button -->
+        <Style TargetType="Button">
+            <Setter Property="Background" Value="#2D2D2C"/>
+            <Setter Property="Foreground" Value="#E0E0E0"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" CornerRadius="8">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#7ED957"/>
+                    <Setter Property="Foreground" Value="#1A1A2E"/>
+                </Trigger>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter Property="Background" Value="#1B7F3A"/>
+                    <!-- 这里改默认的蓝色 -->
+                    <Setter Property="Foreground" Value="#fff"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+
+
+        <Style x:Key="menuButton2" TargetType="Button">
             <Setter Property="Height" Value="47" />
             <Setter Property="Width" Value="217" />
             <Setter Property="Background" Value="Transparent" />
@@ -26,17 +54,17 @@
             </Setter>
             <Style.Triggers>
                 <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="Background" Value="#21203b" />
-                    <Setter Property="Foreground" Value="#e9e9e9" />
+                    <Setter Property="Background" Value="#000000" />
+                    <Setter Property="Foreground" Value="#5D8B28" />
                     <Setter Property="Template">
                         <Setter.Value>
                             <ControlTemplate TargetType="{x:Type Button}">
-                                <Border Background="{TemplateBinding Background}" CornerRadius="20" Padding="20 0 20 0" BorderThickness="3 0 0 0">
+                                <Border Background="{TemplateBinding Background}" CornerRadius="20" Padding="20 0 20 0" BorderThickness="5 0 0 0">
                                     <Border.BorderBrush>
                                         <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
-                                            <GradientStop Color="#D489FF" Offset="0" />
-                                            <GradientStop Color="#7985FF" Offset="0.5" />
-                                            <GradientStop Color="#6AD8FD" Offset="1" />
+                                            <GradientStop Color="#5E9D14" Offset="0" />
+                                            <GradientStop Color="#68A226" Offset="0.5" />
+                                            <GradientStop Color="#5D8B28" Offset="1" />
                                         </LinearGradientBrush>
                                     </Border.BorderBrush>
                                     <ContentPresenter HorizontalAlignment="Stretch" VerticalAlignment="Center" />
@@ -106,7 +134,14 @@
         <Style x:Key="border" TargetType="Border">
             <Setter Property="CornerRadius" Value="25" />
             <Setter Property="Padding" Value="10" />
-            <Setter Property="Background" Value="#362F54" />
+            <Setter Property="Background" Value="#201F1E" />
+            <Setter Property="VerticalAlignment" Value="Top" />
+        </Style>
+
+        <Style x:Key="border2" TargetType="Border">
+            <Setter Property="CornerRadius" Value="25" />
+            <Setter Property="Padding" Value="10" />
+            <Setter Property="Background" Value="#2D2D2C" />
             <Setter Property="VerticalAlignment" Value="Top" />
         </Style>
 
@@ -328,7 +363,7 @@
         </Style>
 
         <Style x:Key="FocusButtonStyle" TargetType="Button">
-            <Setter Property="Background" Value="#2D254A"/>
+            <Setter Property="Background" Value="#2D2D2C"/>
             <Setter Property="Foreground" Value="#fff"/>
             <Setter Property="FontWeight" Value="Bold"/>
             <Setter Property="FontSize" Value="16"/>
@@ -347,7 +382,7 @@
             </Setter>
             <Style.Triggers>
                 <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="Background" Value="#3B2E58"/>
+                    <Setter Property="Background" Value="#000000"/>
                 </Trigger>
                 <Trigger Property="IsEnabled" Value="False">
                     <Setter Property="Background" Value="#1B7F3A"/>
@@ -357,6 +392,44 @@
             </Style.Triggers>
         </Style>
 
+
+
+        <Style x:Key="FocusButtonStyle2" TargetType="Button">
+            <Setter Property="Background" Value="#2D2D2C"/>
+            <Setter Property="Foreground" Value="#fff"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="Height" Value="48"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Padding" Value="8"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" CornerRadius="8">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#000000"/>
+                </Trigger>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter Property="Background" Value="#1B7F3A"/>
+                    <!-- 点击时的深绿色 -->
+                    <Setter Property="Foreground" Value="#fff"/>
+                </Trigger>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Background" Value="#1B7F3A"/>
+                    <Setter Property="Foreground" Value="#fff"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+
+
         <DataTemplate x:Key="AppListBoxItemTemplate">
             <StackPanel Orientation="Horizontal" Margin="0,2,0,2">
                 <Image Source="{Binding Icon}" Width="20" Height="20" Margin="0,0,8,0"/>
@@ -364,7 +437,63 @@
             </StackPanel>
         </DataTemplate>
 
+
         <local:BarWidthConverter x:Key="BarWidthConverter"/>
+
+        <Style x:Key="menuButton" TargetType="Button">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" CornerRadius="16">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#332D4A"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="imageIcon" TargetType="Image">
+            <Setter Property="Width" Value="48"/>
+            <Setter Property="Height" Value="48"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+        </Style>
+
+        <Style x:Key="statsTabButton" TargetType="Button">
+            <Setter Property="Background" Value="#2D2D2C"/>
+            <Setter Property="Foreground" Value="#E0E0E0"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Margin" Value="4,0,2,0"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" CornerRadius="8">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#7ED957"/>
+                    <Setter Property="Foreground" Value="#1A1A2E"/>
+                </Trigger>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter Property="Background" Value="#1B7F3A"/>
+                    <!-- 深绿色 -->
+                    <Setter Property="Foreground" Value="#fff"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
 
     </Application.Resources>
 

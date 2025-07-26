@@ -9,38 +9,68 @@
         WindowStyle="None"
         AllowsTransparency="True" 
         Background="Transparent" 
-        Height="700" 
+        Height="800" 
         Width="1180">
 
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="299*"/>
+            <ColumnDefinition Width="37*"/>
+        </Grid.ColumnDefinitions>
         <!--Grid Background-->
-        <Grid>
+        <Grid Margin="0,79,0,-9" Grid.ColumnSpan="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="auto"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <Border CornerRadius="25 0 0 25" Width="220">
+            <Border CornerRadius="25 0 0 25" Width="110">
                 <Border.Background>
                     <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
-                        <GradientStop Color="#343155" Offset="0" />
-                        <GradientStop Color="#3B2E58" Offset="1" />
+                        <GradientStop Color="#1A1919" Offset="0" />
+                        <GradientStop Color="#1A1919" Offset="1" />
                     </LinearGradientBrush>
                 </Border.Background>
+
+                <Border>
+                    <Grid>
+                        <!-- 左上角的图片 -->
+                        <Image Source="MainWindowImage/slogan.png" 
+                               Style="{StaticResource imageIcon}" 
+                               Height="82" Width="81" 
+                               VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,10,0,0"/>
+
+                        <!-- 中间的按钮 -->
+                        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                            <Button Style="{StaticResource menuButton2}" Margin="0,0,0,40" Click="Button_Click_3" Width="104" Height="161">
+                                <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
+                                    <Image Source="MainWindowImage/analysis.png" Style="{StaticResource imageIcon}" Height="48" Width="48"/>
+                                    <TextBlock Style="{StaticResource buttonText}" HorizontalAlignment="Center" Margin="0,8,0,0" FontWeight="Bold">专注</TextBlock>
+                                </StackPanel>
+                            </Button>
+                            <Button Style="{StaticResource menuButton2}" Click="Button_Click_2" Width="110" Height="161">
+                                <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
+                                    <Image Source="MainWindowImage/deck.png" Style="{StaticResource imageIcon}" Height="48" Width="48"/>
+                                    <TextBlock Text="收集" Style="{StaticResource buttonText}" HorizontalAlignment="Center" Margin="0,8,0,0" FontWeight="Bold"/>
+                                </StackPanel>
+                            </Button>
+                        </StackPanel>
+                    </Grid>
+                </Border>
             </Border>
 
-            <Border CornerRadius="0 25 25 0" MouseDown="Border_MouseDown" Margin="110,0,-2,0" Grid.ColumnSpan="2">
+            <Border CornerRadius="0 25 25 0" MouseDown="Border_MouseDown" Grid.Column="1" HorizontalAlignment="Left" Width="955">
                 <Border.Background>
                     <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
-                        <GradientStop Color="#3E3A65" Offset="0" />
-                        <GradientStop Color="#473765" Offset="1" />
+                        <GradientStop Color="#201F1E" Offset="0" />
+                        <GradientStop Color="#201F1E" Offset="1" />
                     </LinearGradientBrush>
                 </Border.Background>
             </Border>
         </Grid>
 
         <!--Grid Controls-->
-        <Grid>
+        <Grid Margin="0,79,0,-104" Grid.ColumnSpan="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="auto"/>
                 <ColumnDefinition Width="*"/>
@@ -50,66 +80,29 @@
             <!--Main Menu-->
             <StackPanel Width="240">
                 <StackPanel Orientation="Horizontal" Margin="0 50 20 40" HorizontalAlignment="Center"/>
-                <Button Style="{StaticResource menuButton}" Width="244">
-                    <Grid>
-                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
-                            <fa:ImageAwesome Icon="BellOutline" Style="{StaticResource buttonIcon}" RenderTransformOrigin="0.535,0.5" />
-                            <TextBlock Text="Notifications" Style="{StaticResource buttonText}" />
-                        </StackPanel>
-                        <fa:ImageAwesome x:Name="sal" Icon="AngleRight" HorizontalAlignment="Right" Style="{StaticResource buttonIconExpand}" />
-                    </Grid>
-                </Button>
 
-                <Button Style="{StaticResource menuButton}"/>
-
-                <Button Style="{StaticResource menuButton}" Width="244">
-                    <Grid>
-                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
-                            <fa:ImageAwesome Icon="Television" Style="{StaticResource buttonIcon}" />
-                            <TextBlock Text="Monitoring" Style="{StaticResource buttonText}" />
-                        </StackPanel>
-                        <fa:ImageAwesome Icon="AngleRight" HorizontalAlignment="Right" Style="{StaticResource buttonIconExpand}" />
-                    </Grid>
-                </Button>
-
-                <Separator Background="#e0e0e0" Opacity="0.5" Margin="50 15 60 15"/>
-
-                <Button Style="{StaticResource menuButton}" Width="244">
-                    <Grid>
-                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
-                            <fa:ImageAwesome Icon="FolderOutlinepenOutline" Style="{StaticResource buttonIcon}" />
-                            <TextBlock Text="Accounts" Style="{StaticResource buttonText}" />
-                        </StackPanel>
-                        <fa:ImageAwesome Icon="AngleRight" HorizontalAlignment="Right" Style="{StaticResource buttonIconExpand}" />
-                    </Grid>
-                </Button>
-                <Button Style="{StaticResource menuButton}" Width="245">
-                    <Grid>
-                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
-                            <fa:ImageAwesome Icon="CircleOutlineNotch" Style="{StaticResource buttonIcon}" />
-                            <TextBlock Text="Logout" Style="{StaticResource buttonText}" />
-                        </StackPanel>
-                        <fa:ImageAwesome Icon="AngleRight" HorizontalAlignment="Right" Style="{StaticResource buttonIconExpand}" />
-                    </Grid>
-                </Button>
             </StackPanel>
 
             <!--Transaction Panel-->
             <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="297*"/>
+                    <RowDefinition Height="53*"/>
+                </Grid.RowDefinitions>
                 <!--Transfer Panel-->
-                <Border Style="{StaticResource border}" Margin="20,118,20,0" Height="524">
+                <Border Style="{StaticResource border}" Margin="-84,18,124,0" Height="524">
                     <StackPanel>
 
                         <!-- 专注模式 -->
                         <StackPanel Margin="0,20,0,0">
                             <TextBlock Text="专注模式" Foreground="#E0E0E0" FontSize="16" FontWeight="Bold"/>
                             <Button x:Name="FocusModeButton"
-                                Background="#2D254A"
+                                Background="#2A2B2A"
                                 BorderThickness="0"
                                 Padding="8"
                                 Cursor="Hand"
                                 Margin="0,8,0,0"
-                                Click="FocusModeButton_Click">
+                                Click="FocusModeButton_Click" Height="35">
                                 <Button.Resources>
                                     <Style TargetType="Border">
                                         <Setter Property="CornerRadius" Value="8"/>
@@ -120,7 +113,7 @@
 
                             <!-- 下拉菜单（已修复 CornerRadius） -->
                             <Popup x:Name="FocusModePopup" PlacementTarget="{Binding ElementName=FocusModeButton}" Placement="Bottom" StaysOpen="False" AllowsTransparency="True">
-                                <Border Background="#2D254A" CornerRadius="8" Padding="8" Width="120">
+                                <Border Background="#2A2B2A" CornerRadius="8" Padding="8" Width="120">
                                     <StackPanel>
                                         <TextBlock Text="阅读" Style="{StaticResource FocusModeItemStyle}" MouseLeftButtonDown="FocusModeItem_Click"/>
                                         <TextBlock Text="工作" Style="{StaticResource FocusModeItemStyle}" MouseLeftButtonDown="FocusModeItem_Click"/>
@@ -136,7 +129,7 @@
                         <StackPanel Margin="0,40,0,0">
                             <TextBlock Text="白名单" Foreground="#E0E0E0" FontSize="16" FontWeight="Bold"/>
                             <Border x:Name="WhitelistBox"
-                                    Background="#2D254A"
+                                    Background="#2A2B2A"
                                     CornerRadius="8"
                                     Padding="8"
                                     MouseLeftButtonUp="WhitelistBox_Click"
@@ -150,7 +143,7 @@
        Placement="Bottom"
        StaysOpen="False"
        AllowsTransparency="True">
-                                <Border Background="#2D254A" CornerRadius="8" Padding="16" Width="340">
+                                <Border Background="#2A2B2A" CornerRadius="8" Padding="16" Width="340">
                                     <StackPanel>
                                         <!-- 标题 -->
                                         <TextBlock Text="选择允许的应用"
@@ -162,7 +155,7 @@
                                         <TextBox x:Name="AppSearchBox"
                      Margin="0,0,0,8"
                      Height="28"
-                     Background="#22223A"
+                     Background="#201F1E"
                      Foreground="#fff"
                      BorderThickness="0"
                      Padding="6"
@@ -173,7 +166,7 @@
                      SelectionMode="Multiple"
                      Height="200"
                      BorderThickness="0"
-                     Background="#22223A"
+                     Background="#201F1E"
                      Foreground="#fff"
                      ScrollViewer.VerticalScrollBarVisibility="Hidden"
                      ScrollViewer.HorizontalScrollBarVisibility="Disabled"
@@ -181,7 +174,7 @@
 
                                         <!-- 确定按钮 -->
                                         <Button Content="确定"
-                    Background="#3B2E58"
+                    Background="#201F1E"
                     Foreground="#fff"
                     FontWeight="Bold"
                     BorderThickness="0"
@@ -197,12 +190,12 @@
                         <StackPanel Margin="0,40,0,0">
                             <TextBlock Text="专注节奏" Foreground="#E0E0E0" FontSize="16" FontWeight="Bold"/>
                             <Button x:Name="RhythmButton"
-                                Background="#2D254A"
-                                BorderThickness="0"
+                                Background="#2A2B2A"
+                                BorderThickness="10"
                                 Padding="8"
                                 Cursor="Hand"
                                 Margin="0,8,0,0"
-                                Click="RhythmButton_Click">
+                                Click="RhythmButton_Click" Height="34">
                                 <Button.Resources>
                                     <Style TargetType="Border">
                                         <Setter Property="CornerRadius" Value="8"/>
@@ -213,7 +206,7 @@
 
                             <!-- 下拉菜单（已修复 CornerRadius） -->
                             <Popup x:Name="RhythmPopup" PlacementTarget="{Binding ElementName=RhythmButton}" Placement="Bottom" StaysOpen="False" AllowsTransparency="True">
-                                <Border Background="#2D254A" CornerRadius="8" Padding="8" Width="160">
+                                <Border Background="#2A2B2A" CornerRadius="8" Padding="8" Width="160">
                                     <StackPanel>
                                         <TextBlock Text="高效HIIT" Style="{StaticResource FocusModeItemStyle}" MouseLeftButtonDown="RhythmItem_Click"/>
                                         <TextBlock Text="经典番茄钟" Style="{StaticResource FocusModeItemStyle}" MouseLeftButtonDown="RhythmItem_Click"/>
@@ -225,14 +218,14 @@
                             <!-- 时间显示 -->
                             <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
                                 <Border Background="#22223A" CornerRadius="6" Padding="6" Margin="0,0,8,0">
-                                    <TextBlock x:Name="FocusTimeText" Text="15" Foreground="#4ADE80" FontWeight="Bold"/>
+                                    <TextBlock x:Name="FocusTimeText" Text="15" Foreground="#72BC1D" FontWeight="Bold" FontSize="20"/>
                                 </Border>
-                                <TextBlock Text="min focus" Foreground="#aaa" Margin="0,0,8,0"/>
-                                <TextBlock Text="+" Foreground="#aaa" Margin="0,0,8,0"/>
+                                <TextBlock Text="min focus" Foreground="#aaa" Margin="0,5,8,0" FontSize="20"/>
+                                <TextBlock Text="+" Foreground="#aaa" Margin="0,6,8,0" FontSize="20"/>
                                 <Border Background="#22223A" CornerRadius="6" Padding="6" Margin="0,0,8,0">
-                                    <TextBlock x:Name="RestTimeText" Text="2" Foreground="#4ADE80" FontWeight="Bold"/>
+                                    <TextBlock x:Name="RestTimeText" Text="2" Foreground="#72BC1D" FontWeight="Bold" FontSize="20"/>
                                 </Border>
-                                <TextBlock Text="min rest" Foreground="#aaa"/>
+                                <TextBlock Text="min rest" Foreground="#aaa" FontSize="20" Margin="0,5,8,0"/>
 
 
                             </StackPanel>
@@ -245,16 +238,40 @@
 
                 </Border>
 
+                <!-- 先放图片，后放按钮，按钮会在图片上面 -->
+                <Image Source="/MainWindowImage/decoration.png"
+           Width="449" Height="412"
+           HorizontalAlignment="Left"
+           VerticalAlignment="Top"
+           Margin="-75,363,0,0"
+           RenderTransformOrigin="0.5,0.5" Grid.RowSpan="2">
+                    <Image.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="20.373"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Image.RenderTransform>
+                </Image>
+
                 <Button x:Name="StartFocusButton"
-        Content="开始专注"
-        Style="{StaticResource FocusButtonStyle}"
-        Margin="78,527,78,125"
-        Click="StartFocusButton_Click"/>
-                <!--Bank Card-->
+            Content="开始专注"
+            Style="{StaticResource FocusButtonStyle}"
+            Width="180" Height="48"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Margin="41,512,0,0"
+            Click="StartFocusButton_Click"/>
+
+
             </Grid>
 
+
+
+
             <!--Info Panel-->
-            <StackPanel Grid.Column="2" Margin="0 0 20 0">
+            <StackPanel Grid.Column="1" Margin="373,0,0,0" Grid.ColumnSpan="2" HorizontalAlignment="Left" Width="419">
 
                 <!--Top Menu-->
                 <StackPanel Orientation="Horizontal" Margin="20 40 20 0" HorizontalAlignment="Right"/>
@@ -263,9 +280,9 @@
 
                 <!--Information Card-->
                 <Border Style="{StaticResource border}" Height="234" Margin="20">
-                    <Border Background="#2D254A" CornerRadius="24" Margin="0,-39,0,-39" Padding="24" Width="421">
+                    <Border Background="#2D2D2C" CornerRadius="24" Margin="0,-39,0,-39" Padding="24" Width="359">
                         <StackPanel>
-                            <TextBlock Text="专注时长统计" Foreground="#7ED957" FontWeight="Bold" FontSize="22" Margin="0,0,0,16"/>
+                            <TextBlock Text="专注时长统计" Foreground="#72BC1D" FontWeight="Bold" FontSize="22" Margin="0,0,0,16"/>
                             <Canvas x:Name="FocusStatsChart" Height="200" Margin="0,0,0,0"/>
                             <StackPanel x:Name="FocusStatsLabels" Orientation="Horizontal" HorizontalAlignment="Left" Margin="0,12,0,0"/>
                         </StackPanel>
@@ -273,7 +290,7 @@
                 </Border>
                 <!-- 统计切换按钮 -->
                 <Border Style="{StaticResource border}" Height="60" Margin="0,30,0,0">
-                    <Border Background="#2D254A" CornerRadius="16" Padding="8">
+                    <Border Background="#2D2D2C" CornerRadius="16" Padding="8" Width="364">
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
@@ -282,7 +299,7 @@
 
                             <!-- 应用统计按钮 -->
                             <Button x:Name="AppStatsButton" Grid.Column="0" 
-                                    Background="#4ADE80" Foreground="#1A1A2E" 
+                                    Background="#72BC1D" Foreground="#1A1A2E" 
                                     FontWeight="Bold" FontSize="14" Margin="4,0,2,0"
                                     Click="AppStatsButton_Click">
                                 <StackPanel Orientation="Horizontal">
@@ -293,9 +310,9 @@
 
                             <!-- 网站统计按钮 -->
                             <Button x:Name="WebStatsButton" Grid.Column="1" 
-                                    Background="#3B2E58" Foreground="#E0E0E0" 
+                                    Background="#2D2D2C" Foreground="#E0E0E0" 
                                     FontWeight="Bold" FontSize="14" Margin="2,0,4,0"
-                                    Click="WebStatsButton_Click">
+                                    Click="WebStatsButton_Click"  >
                                 <StackPanel Orientation="Horizontal">
                                     <TextBlock Text="🌐" FontSize="16" Margin="0,0,8,0"/>
                                     <TextBlock Text="网站统计"/>
@@ -306,7 +323,7 @@
                 </Border>
 
                 <!-- 应用统计内容 -->
-                <Border x:Name="AppStatsContent" Style="{StaticResource border}" Height="266" Margin="0,20,0,0">
+                <Border x:Name="AppStatsContent" Style="{StaticResource border2}" Height="266" Margin="0,20,0,0" Width="365">
                     <ScrollViewer VerticalScrollBarVisibility="Hidden">
                         <ItemsControl x:Name="UsageList">
                             <ItemsControl.ItemTemplate>
@@ -330,7 +347,7 @@
                                         <!-- 进度条 -->
                                         <Border Grid.Column="1" Grid.Row="1" Height="18" CornerRadius="6" Background="#22223A" BorderBrush="#444466" BorderThickness="1" Margin="0,0,24,0">
                                             <Grid>
-                                                <Rectangle Fill="#4ADE80"
+                                                <Rectangle Fill="#72BC1D"
                                            RadiusX="6" RadiusY="6"
                                            HorizontalAlignment="Left"
                                            Height="18"
@@ -350,13 +367,13 @@
 
                 <!-- 网站统计内容 -->
                 <Border x:Name="WebStatsContent" Style="{StaticResource border}" Height="266" Margin="0,20,0,0" Visibility="Collapsed">
-                    <Border Background="#2D254A" CornerRadius="24" Padding="24">
+                    <Border Background="#2A2B2A" CornerRadius="24" Padding="24">
                         <StackPanel>
                             <StackPanel Orientation="Horizontal" Margin="0,0,0,16">
                                 <TextBlock Text="🌐 网站统计" Foreground="#7ED957" FontWeight="Bold" FontSize="18"/>
-                                <TextBlock x:Name="WebSocketStatusText" Text="检查中..." Foreground="#FF6B6B" FontSize="12" Margin="10,0,0,0" VerticalAlignment="Center"/>
+                                <TextBlock x:Name="WebSocketStatusText" Text="检查扩展" Foreground="#fff" FontSize="12" Margin="10,0,0,0" VerticalAlignment="Center"/>
                                 <Button x:Name="TestWebSocketButton" Content="测试连接" 
-                                        Background="#3B2E58" Foreground="#fff" 
+                                        Background="#2A2B2A" Foreground="#fff" 
                                         FontSize="10" Padding="8,4" Margin="10,0,0,0"
                                         Click="TestWebSocketButton_Click"/>
                             </StackPanel>
@@ -371,7 +388,7 @@
                                                 </Grid.ColumnDefinitions>
                                                 <!-- 网站信息 -->
                                                 <StackPanel Grid.Column="0">
-                                                    <Image Source="{Binding Icon}" Width="16" Height="16" Margin="0,0,6,0"/>
+                                                    <Image Source="{Binding IconSource}" Width="16" Height="16" Margin="0,0,6,0"/>
                                                     <TextBlock Text="{Binding Title}" 
                                                                FontSize="12" FontWeight="Bold" 
                                                                Foreground="#E0E0E0" 
@@ -382,8 +399,9 @@
                                                                TextTrimming="CharacterEllipsis"/>
                                                 </StackPanel>
                                                 <!-- 时长 -->
+                                                <!-- 调试信息 -->
                                                 <TextBlock Grid.Column="1" 
-                                                           Text="{Binding FormattedDuration}" 
+                                                           Text="{Binding DurationDisplay}" 
                                                            VerticalAlignment="Center" 
                                                            HorizontalAlignment="Right"
                                                            Foreground="#E0E0E0" 
@@ -407,5 +425,7 @@
 
         </Grid>
 
+
     </Grid>
+
 </Window>
