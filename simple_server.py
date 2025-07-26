@@ -44,7 +44,7 @@ async def handle_client(websocket, path):
 async def main():
     """启动服务器"""
     host = "localhost"
-    port = 8081
+    port = 9000
     
     logger.info(f"启动WebSocket服务器: ws://{host}:{port}")
     

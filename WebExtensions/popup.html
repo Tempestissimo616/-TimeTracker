@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <style>
+        body {
+            width: 300px;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+        }
+        .status {
+            margin-bottom: 10px;
+        }
+        .connected {
+            color: green;
+        }
+        .disconnected {
+            color: red;
+        }
+        button {
+            padding: 8px 16px;
+            margin: 5px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .primary {
+            background-color: #4CAF50;
+            color: white;
+        }
+        .secondary {
+            background-color: #f44336;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <h3>⏱️ Time Tracker</h3>
+    <div id="status" class="status">检查连接状态...</div>
+    <div id="currentPage"></div>
+    <div>
+        <button id="connectBtn" class="primary">连接服务器</button>
+        <button id="disconnectBtn" class="secondary">断开连接</button>
+    </div>
+    <script src="popup.js"></script>
+</body>
+</html>

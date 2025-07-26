@@ -3,6 +3,20 @@
     "name": "Time Tracker",
     "version": "1.0",
     "description": "Track webpage usage time with detailed information",
+    "icons": {
+        "16": "icons/icon-16.png",
+        "48": "icons/icon-48.png",
+        "128": "icons/icon-128.png"
+    },
+    "action": {
+        "default_popup": "popup.html",
+        "default_title": "Time Tracker",
+        "default_icon": {
+            "16": "icons/icon-16.png",
+            "48": "icons/icon-48.png",
+            "128": "icons/icon-128.png"
+        }
+    },
     "permissions": [
         "activeTab",
         "tabs",

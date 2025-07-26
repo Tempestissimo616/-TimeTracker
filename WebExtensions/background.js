@@ -3,7 +3,7 @@ const TEN_SECONDS_MS = 10 * 1000;
 const FOCUSED_CHECK_MS = 1000;
 const RENOTIFY_MS = 10 * 1000;
 const RECONNECTFAIL_SLEEP = 5;
-const WSURL = 'ws://localhost:8081';
+const WSURL = 'ws://localhost:9000';
 
 let webSocket = null;
 let isConnected = false;
@@ -128,7 +128,9 @@ chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     if (message.type === 'TIME_UPDATE') {
         if (activePage && activePage.url) {
-            activePage.duration += message.timeSpent;
+            // 将毫秒转换为秒
+            // 将毫秒转换为秒Math.round( / 1000)
+            activePage.duration += Math.round(message.timeSpent / 1000);
         }
     } else if (message.type === 'TITLE_UPDATE') {
         if (activePage && activePage.url) {
@@ -172,6 +174,9 @@ function onActivePage(tab) {
         if (activePage.url !== tab.url) {
             calDuration();
             setActive(tab);
+        } else {
+            // 同一个页面，更新页面开始时间（用于焦点切换）
+            activePage.pageStartTime = Date.now();
         }
     } else {
         setActive(tab);
@@ -188,7 +193,8 @@ function setActive(tab) {
             domain: new URL(url).hostname,
             startTime: new Date().toISOString(),
             endTime: null,
-            duration: 0
+            duration: 0,
+            pageStartTime: Date.now() // 添加页面开始时间戳
         };
     } else {
         activePage = null;
@@ -198,6 +204,14 @@ function setActive(tab) {
 function calDuration() {
     if (activePage && activePage.url) {
         const endTime = new Date().toISOString();
+        
+        // 计算当前会话的时长（秒）
+        const currentSessionDuration = activePage.pageStartTime ? 
+            Math.round((Date.now() - activePage.pageStartTime) / 1000) : 0;
+        
+        // 总时长 = 之前累积的时长 + 当前会话时长
+        const totalDuration = activePage.duration + currentSessionDuration;
+        
         const data = {
             url: activePage.url,
             title: activePage.title,
@@ -205,8 +219,10 @@ function calDuration() {
             domain: activePage.domain,
             startTime: activePage.startTime,
             endTime: endTime,
-            duration: activePage.duration
+            duration: totalDuration // 现在是秒为单位
         };
+        
+        console.log(`页面 ${activePage.domain} 总时长: ${totalDuration}秒`);
         activePage = null;
         notifyServer(data);
     }
@@ -237,6 +253,12 @@ function startWatchFocus() {
 chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
     if (tabs[0]) {
         onActivePage(tabs[0]);
-    }
+   
+ }
 });
+
+
+
+
+
 
