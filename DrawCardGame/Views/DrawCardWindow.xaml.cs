@@ -27,8 +27,37 @@ namespace DrawCardGame
             new Card { Id = 2, Name = "Pikachu", ImagePath = "Images/card_pikachu.png" },
             new Card { Id = 3, Name = "Dog", ImagePath = "Images/card_dog.png" },
             new Card { Id = 4, Name = "Rabbit", ImagePath = "Images/card_rabbit.png" },
-            // 更多卡片...
-        };
+                new Card { Id = 5, Name = "Bicycle", ImagePath = "Images/card_bicycle.png" },
+            new Card { Id = 6, Name = "BMW", ImagePath = "Images/card_bmw.png" },
+            new Card { Id = 7, Name = "Book", ImagePath = "Images/card_book.png" },
+            new Card { Id = 8, Name = "Bubble Tea", ImagePath = "Images/card_bubbletea.png" },
+            new Card { Id = 9, Name = "F1 Car", ImagePath = "Images/card_f1_car.png" },
+            new Card { Id = 10, Name = "French Fries", ImagePath = "Images/card_frenchfries.png" },
+            new Card { Id = 11, Name = "Pen", ImagePath = "Images/card_pen.png" },
+            new Card { Id = 12, Name = "Pencil", ImagePath = "Images/card_pencil.png" },
+            new Card { Id = 13, Name = "Pizza", ImagePath = "Images/card_pizza.png" },
+            new Card { Id = 14, Name = "Ruler", ImagePath = "Images/card_ruler.png" },
+            new Card { Id = 15, Name = "AE86", ImagePath = "Images/card_AE86.png" },
+            new Card { Id = 16, Name = "Japanese Anime Gundam", ImagePath = "Images/card__japanese_anime_gundam.png" },
+            new Card { Id = 17, Name = "Honda Civic Type R", ImagePath = "Images/card_honda_civic_type_r.png" },
+            new Card { Id = 18, Name = "Ice Cream", ImagePath = "Images/card_icecream.png" },
+            new Card { Id = 19, Name = "Knife", ImagePath = "Images/card_knife.png" },
+            new Card { Id = 20, Name = "MacBook", ImagePath = "Images/card_macbook.png" },
+            new Card { Id = 21, Name = "Monkey D. Luffy", ImagePath = "Images/card_Monkey_D.Luffy.png" },
+            new Card { Id = 22, Name = "Naruto", ImagePath = "Images/card_naruto.png" },
+            new Card { Id = 23, Name = "Pistol", ImagePath = "Images/card_pistol.png" },
+            new Card { Id = 24, Name = "Plane", ImagePath = "Images/card_plane.png" },
+            new Card { Id = 25, Name = "Rifle", ImagePath = "Images/card_rifle.png" },
+            new Card { Id = 26, Name = "Rononoa Zoro", ImagePath = "Images/card_Roronoa_zoro.png" },
+            new Card { Id = 27, Name = "Shotgun", ImagePath = "Images/card_shotgun.png" },
+            new Card { Id = 28, Name = "Sniper Rifle", ImagePath = "Images/card_sniper_rifle.png" },
+            new Card { Id = 29, Name = "Subway", ImagePath = "Images/card_subway.png" },
+            new Card { Id = 30, Name = "Train", ImagePath = "Images/card_train.png" },
+            new Card { Id = 31, Name = "Cookie", ImagePath = "Images/card_cookies.png" },
+            new Card { Id = 32, Name = "Birthdaycake", ImagePath = "Images/card_birthdaycake.png" }
+};
+
+
 
         // ✅ 倒计时相关变量
         private DispatcherTimer countdownTimer;
@@ -56,21 +85,20 @@ namespace DrawCardGame
             Random rand = new Random();
             var selected = CardLibrary.OrderBy(x => rand.Next()).Take(2).ToList();
 
-            Card1Image.Source = new BitmapImage(new Uri($"pack://application:,,,/{selected[0].ImagePath}"));
-            Card2Image.Source = new BitmapImage(new Uri($"pack://application:,,,/{selected[1].ImagePath}"));
-
-            hasDrawn = true; // 标记为已抽卡
-            countdownTimer?.Stop(); // 如果点击了就不再等倒计时
-            SaveCardToDatabase(selected[0].Id);
-            SaveCardToDatabase(selected[1].Id);
+            hasDrawn = true;
+            countdownTimer?.Stop();
 
             var card1 = selected[0];
             var card2 = selected[1];
 
+           //OpenBoxAnimation.Stop();
+
+            //PlayOpenBoxAnimation();
+
             await ShowCardsWithDelay(card1, card2);
 
-            //var popup = new DrawPopupWindow(card1.ImagePath, card2.ImagePath);
-            //popup.ShowDialog();
+            SaveCardToDatabase(card1.Id);
+            SaveCardToDatabase(card2.Id);
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -129,11 +157,6 @@ namespace DrawCardGame
             //popup.ShowDialog();
         }
 
-        private void OpenCardLibrary_Click(object sender, RoutedEventArgs e)
-        {
-            CardLibraryWindow cardLibraryWindow = new CardLibraryWindow();
-            cardLibraryWindow.Show(); // 使用 Show() 表示非模态窗口，ShowDialog() 是模态窗口
-        }
 
         private void SaveCardToDatabase(int cardId)
         {
@@ -155,10 +178,18 @@ namespace DrawCardGame
             Card1Image.Source = null;
             Card2Image.Source = null;
 
-            await Task.Delay(5000);
+            await Task.Delay(1000);
+           // Card1Image.Width = 300;
+            //Card1Image.Height = 260;
+            //Card2Image.Width = 300;
+            //Card2Image.Height = 260;
+
             Card1Image.Source = new BitmapImage(new Uri($"pack://application:,,,/{card1.ImagePath}"));
+            Card1Image.Visibility = Visibility.Visible;
 
             Card2Image.Source = new BitmapImage(new Uri($"pack://application:,,,/{card2.ImagePath}"));
+            Card2Image.Visibility = Visibility.Visible;
+
 
             //var popup = new DrawPopupWindow(card1.ImagePath, card2.ImagePath);
             //popup.ShowDialog();

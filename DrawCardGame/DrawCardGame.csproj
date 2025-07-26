@@ -10,10 +10,37 @@
 
   <ItemGroup>
     <None Remove="Assets\70cb140ab63a37e7d6e669d5ef1c698453520970.png" />
+    <None Remove="Assets\box_animation.mp4" />
+    <None Remove="Images\card_AE86.png" />
+    <None Remove="Images\card_bicycle.png" />
+    <None Remove="Images\card_birthdaycake.png" />
+    <None Remove="Images\card_bmw.png" />
+    <None Remove="Images\card_book.png" />
+    <None Remove="Images\card_bubbletea.png" />
     <None Remove="Images\card_cat.png" />
+    <None Remove="Images\card_cookies.png" />
     <None Remove="Images\card_dog.png" />
+    <None Remove="Images\card_f1_car.png" />
+    <None Remove="Images\card_frenchfries.png" />
+    <None Remove="Images\card_honda_civic_type_r.png" />
+    <None Remove="Images\card_macbook.png" />
+    <None Remove="Images\card_Monkey_D.Luffy.png" />
+    <None Remove="Images\card_naruto.png" />
+    <None Remove="Images\card_pen.png" />
+    <None Remove="Images\card_pencil.png" />
     <None Remove="Images\card_pikachu.png" />
+    <None Remove="Images\card_pistol.png" />
+    <None Remove="Images\card_pizza.png" />
+    <None Remove="Images\card_plane.png" />
     <None Remove="Images\card_rabbit.png" />
+    <None Remove="Images\card_rifle.png" />
+    <None Remove="Images\card_Roronoa_zoro.png" />
+    <None Remove="Images\card_ruler.png" />
+    <None Remove="Images\card_shotgun.png" />
+    <None Remove="Images\card_sniper_rifle.png" />
+    <None Remove="Images\card_subway.png" />
+    <None Remove="Images\card_train.png" />
+    <None Remove="Images\card__japanese_anime_gundam.png" />
     <None Remove="Images\placeholder.png" />
   </ItemGroup>
 
@@ -23,18 +50,99 @@
 
   <ItemGroup>
     <Resource Include="Assets\70cb140ab63a37e7d6e669d5ef1c698453520970.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Content Include="Assets\box_animation.mp4">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Resource Include="Images\card_AE86.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\card_bicycle.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\card_birthdaycake.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\card_bmw.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\card_book.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\card_bubbletea.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Images\card_cat.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\card_cookies.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Images\card_dog.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Images\card_f1_car.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\card_frenchfries.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\card_honda_civic_type_r.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\card_macbook.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\card_Monkey_D.Luffy.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\card_naruto.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\card_pen.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\card_pencil.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Images\card_pikachu.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Images\card_pistol.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\card_pizza.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\card_plane.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Images\card_rabbit.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\card_rifle.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\card_Roronoa_zoro.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\card_ruler.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\card_shotgun.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\card_sniper_rifle.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\card_subway.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\card_train.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\card__japanese_anime_gundam.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Images\placeholder.png">
