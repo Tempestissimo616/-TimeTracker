@@ -13,12 +13,16 @@
         Width="1180">
 
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="193*"/>
+            <RowDefinition Height="207*"/>
+        </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="299*"/>
             <ColumnDefinition Width="37*"/>
         </Grid.ColumnDefinitions>
         <!--Grid Background-->
-        <Grid Margin="0,79,0,-9" Grid.ColumnSpan="2">
+        <Grid Margin="0,79,0,-9" Grid.ColumnSpan="2" Grid.RowSpan="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="auto"/>
                 <ColumnDefinition Width="*"/>
@@ -70,7 +74,7 @@
         </Grid>
 
         <!--Grid Controls-->
-        <Grid Margin="0,79,0,-104" Grid.ColumnSpan="2">
+        <Grid Margin="0,79,0,-104" Grid.ColumnSpan="2" Grid.RowSpan="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="auto"/>
                 <ColumnDefinition Width="*"/>
@@ -119,7 +123,7 @@
                                         <TextBlock Text="工作" Style="{StaticResource FocusModeItemStyle}" MouseLeftButtonDown="FocusModeItem_Click"/>
                                         <TextBlock Text="电影" Style="{StaticResource FocusModeItemStyle}" MouseLeftButtonDown="FocusModeItem_Click"/>
                                         <TextBlock Text="游戏" Style="{StaticResource FocusModeItemStyle}" MouseLeftButtonDown="FocusModeItem_Click"/>
-                                        <TextBlock Text="其他" Style="{StaticResource FocusModeItemStyle}" MouseLeftButtonDown="FocusModeItem_Click"/>
+                                        <TextBlock Text="自定义" Style="{StaticResource FocusModeItemStyle}" MouseLeftButtonDown="FocusModeItem_Click"/>
                                     </StackPanel>
                                 </Border>
                             </Popup>

@@ -363,18 +363,22 @@
         </Style>
 
         <Style x:Key="FocusButtonStyle" TargetType="Button">
-            <Setter Property="Background" Value="#2D2D2C"/>
+            <Setter Property="Background" Value="#201F1E"/>
             <Setter Property="Foreground" Value="#fff"/>
             <Setter Property="FontWeight" Value="Bold"/>
             <Setter Property="FontSize" Value="16"/>
             <Setter Property="Height" Value="48"/>
-            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="BorderThickness" Value="2"/>
+            <Setter Property="BorderBrush" Value="#417505"/>
             <Setter Property="Cursor" Value="Hand"/>
             <Setter Property="Padding" Value="8"/>
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
-                        <Border Background="{TemplateBinding Background}" CornerRadius="8">
+                        <Border Background="{TemplateBinding Background}" 
+                                BorderBrush="{TemplateBinding BorderBrush}" 
+                                BorderThickness="{TemplateBinding BorderThickness}" 
+                                CornerRadius="8">
                             <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         </Border>
                     </ControlTemplate>
@@ -383,11 +387,13 @@
             <Style.Triggers>
                 <Trigger Property="IsMouseOver" Value="True">
                     <Setter Property="Background" Value="#000000"/>
+                    <Setter Property="BorderBrush" Value="#72BC1D"/>
                 </Trigger>
                 <Trigger Property="IsEnabled" Value="False">
                     <Setter Property="Background" Value="#1B7F3A"/>
                     <!-- 深绿色 -->
                     <Setter Property="Foreground" Value="#fff"/>
+                    <Setter Property="BorderBrush" Value="#72BC1D"/>
                 </Trigger>
             </Style.Triggers>
         </Style>

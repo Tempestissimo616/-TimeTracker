@@ -129,13 +129,21 @@ namespace Wallet_Payment
         }
         private void LoadUsageData()
         {
-            var usage = DatabaseHelper.GetTodayUsage();
+            // 获取当前进程名（不带.exe）
+            string currentProcessName = Process.GetCurrentProcess().ProcessName;
+
+            // 过滤掉本程序自己
+            var usage = DatabaseHelper.GetTodayUsage()
+                .Where(x => !string.Equals(x.ProcessName, currentProcessName, StringComparison.OrdinalIgnoreCase))
+                .ToList();
+
             var all = usage.Select(x => new UsageItem
             {
                 ProcessName = x.ProcessName,
                 Duration = x.Duration,
                 Icon = GetAppIcon(x.ProcessName)
             }).ToList();
+
             MaxDuration = all.Count > 0 ? all.Max(x => x.Duration) : 1;
             BarWidthConverter.MaxDuration = all.Count > 0 ? all.Max(x => x.Duration) : 1;
             UsageList.DataContext = this;
@@ -226,7 +234,11 @@ namespace Wallet_Payment
                 StartFocusButton.Content = "开始专注";
                 // 记录本次专注到数据库
                 DatabaseHelper.AddFocusMinutes(currentMode, currentSessionMinutes);
-                MessageBox.Show($"专注完成！本次专注 {currentSessionMinutes} 分钟");
+
+                int focusMinutes = int.Parse(FocusTimeText.Text);
+                int restMinutes = int.Parse(RestTimeText.Text);
+                var drawCardWindow = new DrawCardWindow(restMinutes, focusMinutes);
+                drawCardWindow.Show();
                 DrawFocusStatsChart();
             }
         }
@@ -235,7 +247,7 @@ namespace Wallet_Payment
 
 
 
-        private readonly string[] focusModes = { "阅读", "工作", "电影", "游戏", "其他" };
+        private readonly string[] focusModes = { "阅读", "工作", "电影", "游戏", "自定义" };
 
         private void DrawFocusStatsChart()
         {

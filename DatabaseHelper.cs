@@ -51,7 +51,7 @@ namespace Social_Blade_Dashboard
 
 
                 // 初始化5个模式
-                string[] modes = { "阅读", "工作", "电影", "游戏", "其他" };
+                string[] modes = { "阅读", "工作", "电影", "游戏", "自定义" };
                 foreach (var mode in modes)
                 {
                     string checkSql = "SELECT COUNT(*) FROM FocusStats WHERE Mode=@m";
