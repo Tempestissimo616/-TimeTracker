@@ -2,14 +2,19 @@
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
+using System.Windows.Media.Imaging;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
+using WpfAnimatedGif;
+
 
 namespace DrawCardGame
 {
@@ -40,8 +45,6 @@ namespace DrawCardGame
             new Card { Id = 15, Name = "AE86", ImagePath = "Images/card_AE86.png" },
             new Card { Id = 16, Name = "Japanese Anime Gundam", ImagePath = "Images/card__japanese_anime_gundam.png" },
             new Card { Id = 17, Name = "Honda Civic Type R", ImagePath = "Images/card_honda_civic_type_r.png" },
-            new Card { Id = 18, Name = "Ice Cream", ImagePath = "Images/card_icecream.png" },
-            new Card { Id = 19, Name = "Knife", ImagePath = "Images/card_knife.png" },
             new Card { Id = 20, Name = "MacBook", ImagePath = "Images/card_macbook.png" },
             new Card { Id = 21, Name = "Monkey D. Luffy", ImagePath = "Images/card_Monkey_D.Luffy.png" },
             new Card { Id = 22, Name = "Naruto", ImagePath = "Images/card_naruto.png" },
@@ -61,7 +64,7 @@ namespace DrawCardGame
 
         // ✅ 倒计时相关变量
         private DispatcherTimer countdownTimer;
-        private int secondsLeft = 3000;
+        private int secondsLeft = 30;
 
         // ✅ 是否已抽卡标志
         private bool hasDrawn = false;
@@ -82,24 +85,38 @@ namespace DrawCardGame
         {
             if (hasDrawn) return;
 
+            // 停止倒计时
+            countdownTimer?.Stop();
+            hasDrawn = true;
+
+            // 随机抽取两张卡
             Random rand = new Random();
             var selected = CardLibrary.OrderBy(x => rand.Next()).Take(2).ToList();
-
-            hasDrawn = true;
-            countdownTimer?.Stop();
-
             var card1 = selected[0];
             var card2 = selected[1];
 
-           //OpenBoxAnimation.Stop();
+            // ✅ 播放 GIF 动画
+            var gifUri = new Uri(System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Assets/carddraw.gif"), UriKind.Absolute);
+            var image = OpenBoxGif; 
 
-            //PlayOpenBoxAnimation();
+            // 设置 GIF 动画并播放
+            var imageSource = new System.Windows.Media.Imaging.BitmapImage(gifUri);
+            ImageBehavior.SetAnimatedSource(image, imageSource);
 
+            // 仅播放一次
+            ImageBehavior.SetRepeatBehavior(image, new System.Windows.Media.Animation.RepeatBehavior(1));
+
+            // ✅ 等待动画播放完毕
+            await Task.Delay(1100);
+
+            // ✅ 展示卡牌
             await ShowCardsWithDelay(card1, card2);
 
+            // ✅ 存储获得的卡牌
             SaveCardToDatabase(card1.Id);
             SaveCardToDatabase(card2.Id);
         }
+
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
@@ -109,7 +126,7 @@ namespace DrawCardGame
             countdownTimer.Start();
         }
 
-        private void CountdownTimer_Tick(object sender, EventArgs e)
+        private async void CountdownTimer_Tick(object sender, EventArgs e)
         {
             secondsLeft--;
 
@@ -117,44 +134,59 @@ namespace DrawCardGame
 
             if (secondsLeft == 1 && !hasDrawn)
             {
-                AutoDrawCards(); // 自动抽卡
+                await Task.Delay(500); 
+                await Task.Run(() => Dispatcher.Invoke(() => AutoDrawCards()));
             }
 
             if (secondsLeft <= 0)
             {
                 countdownTimer.Stop();
 
-                // 弹出对话框，用户确认后关闭窗口
-                MessageBoxResult result = MessageBox.Show("本次抽卡已结束。点击确定关闭窗口。", "提示", MessageBoxButton.OK);
+                // ✅ 等待抽卡过程完成后再关闭窗口
+                await Task.Delay(500);
+
+                MessageBoxResult result = MessageBox.Show(this, "本次抽卡已结束。点击确定关闭窗口。", "提示", MessageBoxButton.OK);
 
                 if (result == MessageBoxResult.OK)
                 {
-                    this.Close(); // 关闭窗口
+                    this.Close();
                 }
             }
         }
 
 
+
         // ✅ 自动抽卡逻辑
         private async void AutoDrawCards()
         {
+
+            // 随机抽取两张卡
             Random rand = new Random();
             var selected = CardLibrary.OrderBy(x => rand.Next()).Take(2).ToList();
-
-            Card1Image.Source = new BitmapImage(new Uri($"pack://application:,,,/{selected[0].ImagePath}"));
-            Card2Image.Source = new BitmapImage(new Uri($"pack://application:,,,/{selected[1].ImagePath}"));
-
-            hasDrawn = true;
-            SaveCardToDatabase(selected[0].Id);
-            SaveCardToDatabase(selected[1].Id);
-
             var card1 = selected[0];
             var card2 = selected[1];
 
+            // ✅ 播放 GIF 动画
+            var gifUri = new Uri(System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Assets/carddraw.gif"), UriKind.Absolute);
+            var image = OpenBoxGif;
+
+            // 设置 GIF 动画并播放
+            var imageSource = new System.Windows.Media.Imaging.BitmapImage(gifUri);
+            ImageBehavior.SetAnimatedSource(image, imageSource);
+
+            // 仅播放一次
+            ImageBehavior.SetRepeatBehavior(image, new System.Windows.Media.Animation.RepeatBehavior(1));
+
+            // ✅ 等待动画播放完毕
+            await Task.Delay(1100);
+
+            // ✅ 展示卡牌
             await ShowCardsWithDelay(card1, card2);
 
-            //var popup = new DrawPopupWindow(card1.ImagePath, card2.ImagePath);
-            //popup.ShowDialog();
+            // ✅ 存储获得的卡牌
+            SaveCardToDatabase(card1.Id);
+            SaveCardToDatabase(card2.Id);
+
         }
 
 
@@ -178,7 +210,7 @@ namespace DrawCardGame
             Card1Image.Source = null;
             Card2Image.Source = null;
 
-            await Task.Delay(1000);
+            await Task.Delay(920);
            // Card1Image.Width = 300;
             //Card1Image.Height = 260;
             //Card2Image.Width = 300;
@@ -191,12 +223,30 @@ namespace DrawCardGame
             Card2Image.Visibility = Visibility.Visible;
 
 
+            FadeInImage(Card1Image);
+            FadeInImage(Card2Image);
             //var popup = new DrawPopupWindow(card1.ImagePath, card2.ImagePath);
             //popup.ShowDialog();
         }
 
+        private void FadeInImage(Image image)
+        {
+            image.Visibility = Visibility.Visible;
+
+            var fadeIn = new DoubleAnimation
+            {
+                From = 0,
+                To = 1,
+                Duration = TimeSpan.FromSeconds(0.5),
+                EasingFunction = new QuadraticEase { EasingMode = EasingMode.EaseOut }
+            };
+
+            image.BeginAnimation(UIElement.OpacityProperty, fadeIn);
+        }
+
+
     }
 
 
-  
+
 }

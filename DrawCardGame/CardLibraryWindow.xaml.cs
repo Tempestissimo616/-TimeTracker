@@ -56,7 +56,7 @@ namespace DrawCardGame
             new Card { Id = 2, Name = "Pikachu", ImagePath = "Images/card_pikachu.png" },
             new Card { Id = 3, Name = "Dog", ImagePath = "Images/card_dog.png" },
             new Card { Id = 4, Name = "Rabbit", ImagePath = "Images/card_rabbit.png" },
-                new Card { Id = 5, Name = "Bicycle", ImagePath = "Images/card_bicycle.png" },
+            new Card { Id = 5, Name = "Bicycle", ImagePath = "Images/card_bicycle.png" },
             new Card { Id = 6, Name = "BMW", ImagePath = "Images/card_bmw.png" },
             new Card { Id = 7, Name = "Book", ImagePath = "Images/card_book.png" },
             new Card { Id = 8, Name = "Bubble Tea", ImagePath = "Images/card_bubbletea.png" },
@@ -69,8 +69,6 @@ namespace DrawCardGame
             new Card { Id = 15, Name = "AE86", ImagePath = "Images/card_AE86.png" },
             new Card { Id = 16, Name = "Japanese Anime Gundam", ImagePath = "Images/card__japanese_anime_gundam.png" },
             new Card { Id = 17, Name = "Honda Civic Type R", ImagePath = "Images/card_honda_civic_type_r.png" },
-            new Card { Id = 18, Name = "Ice Cream", ImagePath = "Images/card_icecream.png" },
-            new Card { Id = 19, Name = "Knife", ImagePath = "Images/card_knife.png" },
             new Card { Id = 20, Name = "MacBook", ImagePath = "Images/card_macbook.png" },
             new Card { Id = 21, Name = "Monkey D. Luffy", ImagePath = "Images/card_Monkey_D.Luffy.png" },
             new Card { Id = 22, Name = "Naruto", ImagePath = "Images/card_naruto.png" },
@@ -86,7 +84,7 @@ namespace DrawCardGame
             new Card { Id = 32, Name = "Birthdaycake", ImagePath = "Images/card_birthdaycake.png" }
 };
 
-            int totalSlots = 32;
+            int totalSlots = 30;
 
             for (int i = 0; i < totalSlots; i++)
             {
