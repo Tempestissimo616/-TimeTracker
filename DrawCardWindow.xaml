@@ -93,7 +93,7 @@
 
                     <!-- 标题 -->
                     <TextBlock Grid.Column="0" 
-                               Text="获得奖励!" 
+                               Text="休息时间!" 
                                Style="{StaticResource TitleStyle}"
                                VerticalAlignment="Center" HorizontalAlignment="Left" Margin="168,0,0,0"/>
 
