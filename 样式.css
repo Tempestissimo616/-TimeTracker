@@ -1,0 +1,207 @@
+// 导入cursor，cursor说这里定义了所有和设计稿一致的样式细节
+.main-bg {
+  width: 768px;
+  height: 440px;
+  background: #201F1E;
+  border-radius: 3px;
+  margin: 40px auto;
+  position: relative;
+  font-family: 'Microsoft YaHei', '微软雅黑', Arial, sans-serif;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.top-bar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 24px;
+  padding: 8px 15px 0 15px;
+  gap: 30px;
+}
+.top-icon {
+  width: 16px;
+  color: #fff;
+  font-family: 'Segoe Fluent Icons', Arial, sans-serif;
+  font-weight: 400;
+  line-height: 16px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 16px;
+  font-size: 16px;
+}
+
+.content-row {
+  display: flex;
+  flex-direction: row;
+  height: 416px;
+  margin-top: 0;
+}
+
+.sidebar {
+  background: #1A1919;
+  border-radius: 6px 0 0 6px;
+  width: 48px;
+  height: 440px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  padding-top: 105px;
+  padding-bottom: 90px;
+  position: relative;
+  overflow: hidden;
+}
+.sidebar-icon-box {
+  background: rgba(0,0,0,0.89);
+  border-radius: 4px;
+  width: 48px;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2px 9px;
+}
+.sidebar-icon {
+  width: 30px;
+  height: 30px;
+  background-size: cover;
+}
+.mt-66 {
+  margin-top: 66px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.mt-51 {
+  margin-top: 51px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.sidebar-label {
+  width: 16px;
+  color: #fff;
+  font-size: 8px;
+  font-weight: 290;
+  line-height: 16px;
+  text-align: center;
+  margin: 1px 16px 0 16px;
+  min-height: 16px;
+}
+.sidebar-mode-label {
+  position: absolute;
+  top: 138px;
+  left: 16px;
+  color: #fff;
+  font-size: 8px;
+  font-weight: 290;
+  line-height: 16px;
+  text-align: center;
+  min-height: 16px;
+}
+
+.main-card {
+  background: linear-gradient(180deg, rgba(163,162,162,0.15) 44%, rgba(153,153,153,0.00) 88%);
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  width: 344px;
+  height: 301px;
+  margin: 77px 0 62px 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  padding: 45px 26px 28px 26px;
+  position: relative;
+  gap: 27px;
+  overflow: hidden;
+}
+.main-card-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 7px;
+}
+.main-title {
+  color: rgba(104,162,38,0.80);
+  font-size: 38px;
+  line-height: 16px;
+  letter-spacing: 1.9px;
+  text-align: center;
+  margin-top: 5px;
+  min-height: 16px;
+}
+.main-title-icon {
+  width: 30px;
+  height: 30px;
+  background-size: cover;
+}
+.main-card-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 5px;
+  position: relative;
+}
+.main-card-label {
+  width: 46px;
+  color: #CBCBCB;
+  font-size: 22px;
+  line-height: 16px;
+  letter-spacing: 1.1px;
+  text-align: center;
+  min-height: 16px;
+}
+.main-card-time {
+  width: 70px;
+  color: #CCCCCC;
+  font-size: 22px;
+  line-height: 16px;
+  text-align: center;
+  margin-top: 2px;
+  margin-left: 13px;
+  min-height: 16px;
+}
+.main-card-exclaim {
+  width: 24px;
+  color: #CCCCCC;
+  font-size: 24px;
+  line-height: 16px;
+  letter-spacing: 1.2px;
+  text-align: center;
+  min-height: 16px;
+  position: absolute;
+  left: 110px;
+  top: 1px;
+}
+.main-card-btn-row {
+  width: 292px;
+  margin-top: 98px;
+  display: flex;
+  align-items: flex-start;
+  padding-left: 15px;
+}
+.main-card-btn {
+  width: 84px;
+  height: 28px;
+  border: 1px solid #CCCCCC;
+  border-radius: 6px;
+  background: transparent;
+  color: #fff;
+  font-size: 14px;
+  cursor: pointer;
+  padding: 5px 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.main-card-bg {
+  position: absolute;
+  width: 194px;
+  height: 211px;
+  top: 90px;
+  left: 150px;
+  background-size: cover;
+  z-index: 0;
+  pointer-events: none;
+}
