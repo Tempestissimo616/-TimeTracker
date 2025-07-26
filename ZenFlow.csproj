@@ -3,7 +3,16 @@
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <RootNamespace>Wallet_Payment</RootNamespace>
+	  <RootNamespace>ZenFlow</RootNamespace>
+	  <AssemblyName>ZenFlow</AssemblyName>
+	  <UseWPF>true</UseWPF>
+	  <!-- <ApplicationIcon>MainWindowImage\favicon.ico</ApplicationIcon> -->
+	  <AssemblyTitle>ZenFlow</AssemblyTitle>
+	  <AssemblyDescription>ZenFlow 专注时间管理应用</AssemblyDescription>
+	  <AssemblyCompany>ZenFlow</AssemblyCompany>
+	  <AssemblyProduct>ZenFlow</AssemblyProduct>
+	  <AssemblyVersion>1.0.0.0</AssemblyVersion>
+	  <FileVersion>1.0.0.0</FileVersion>
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
@@ -43,6 +52,7 @@
     <None Remove="MainWindowImage\deck.png" />
     <None Remove="MainWindowImage\decoration.png" />
     <None Remove="MainWindowImage\draw.gif" />
+    <None Remove="MainWindowImage\favicon.ico" />
     <None Remove="MainWindowImage\slogan.png" />
   </ItemGroup>
 
@@ -159,6 +169,7 @@
     <Resource Include="MainWindowImage\draw.gif">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="favicon.ico" />
     <Resource Include="MainWindowImage\slogan.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
