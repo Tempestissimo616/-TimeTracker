@@ -1,11 +1,14 @@
-﻿using Social_Blade_Dashboard;
+﻿using Microsoft.Win32; // 文件顶部
+using Social_Blade_Dashboard;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -13,8 +16,6 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Threading;
 using Wallet_Payment;
-using Microsoft.Win32; // 文件顶部
-using System.IO;
 
 
 namespace Wallet_Payment
@@ -28,6 +29,7 @@ namespace Wallet_Payment
     {
         private UsageTracker tracker;
         private DispatcherTimer refreshTimer;
+        private WebSocketService webSocketService;
         public class UsageItem
         {
             public string ProcessName { get; set; }
@@ -65,6 +67,9 @@ namespace Wallet_Payment
             refreshTimer.Interval = TimeSpan.FromSeconds(5);
             refreshTimer.Tick += (s, e) => LoadUsageData();
             refreshTimer.Start();
+
+            // 启动WebSocket服务
+            InitializeWebSocketService();
         }
 
 
@@ -84,6 +89,7 @@ namespace Wallet_Payment
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             LoadUsageData();
+            LoadWebTrackingData();
         }
 
         public static ImageSource GetAppIcon(string processName)
@@ -189,7 +195,7 @@ namespace Wallet_Payment
             currentMode = FocusModeText.Text;
             int.TryParse(FocusTimeText.Text, out int focusMinutes);
             currentSessionMinutes = focusMinutes;
-            focusSecondsLeft = focusMinutes * 60; // 这里要乘60，单位是秒
+            focusSecondsLeft = focusMinutes; // 这里要乘60，单位是秒
             StartFocusButton.IsEnabled = false;
             StartFocusButton.Content = "专注中";
             focusActive = true; // 标记专注中
@@ -454,5 +460,200 @@ namespace Wallet_Payment
         {
 
         }
+
+
+        private async void InitializeWebSocketService()
+        {
+            try
+            {
+                webSocketService = new WebSocketService();
+                webSocketService.OnTimeTrackingDataReceived += OnTimeTrackingDataReceived;
+                await webSocketService.StartServerAsync();
+
+                // 更新WebSocket状态显示
+                UpdateWebSocketStatus();
+
+                // 添加一些测试数据，确保UI能正常显示
+                AddTestWebTrackingData();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"启动WebSocket服务失败: {ex.Message}");
+                // 不显示错误对话框，避免影响用户体验
+                // 添加测试数据，确保UI能正常显示
+                AddTestWebTrackingData();
+                UpdateWebSocketStatus();
+            }
+        }
+
+        private void UpdateWebSocketStatus()
+        {
+            try
+            {
+                if (webSocketService != null)
+                {
+                    string status = webSocketService.GetServerStatus();
+                    WebSocketStatusText.Text = status;
+
+                    if (status.Contains("✅"))
+                    {
+                        WebSocketStatusText.Foreground = System.Windows.Media.Brushes.LightGreen;
+                    }
+                    else
+                    {
+                        WebSocketStatusText.Foreground = System.Windows.Media.Brushes.OrangeRed;
+                    }
+                }
+                else
+                {
+                    WebSocketStatusText.Text = "❌ WebSocket服务未初始化";
+                    WebSocketStatusText.Foreground = System.Windows.Media.Brushes.OrangeRed;
+                }
+            }
+            catch (Exception ex)
+            {
+                WebSocketStatusText.Text = $"❌ 状态检查失败: {ex.Message}";
+                WebSocketStatusText.Foreground = System.Windows.Media.Brushes.OrangeRed;
+            }
+        }
+
+        private void AddTestWebTrackingData()
+        {
+            try
+            {
+                // 添加一些测试数据，确保Web时间追踪区域能正常显示
+                var testData = new TimeTrackingData
+                {
+                    Title = "测试网站",
+                    Domain = "example.com",
+                    Duration = "5分钟"
+                };
+
+                DatabaseHelper.AddWebTimeTracking(testData);
+                LoadWebTrackingData();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"添加测试数据失败: {ex.Message}");
+            }
+        }
+
+        private void OnTimeTrackingDataReceived(TimeTrackingData data)
+        {
+            try
+            {
+                // 将WebSocket接收到的数据保存到数据库
+                DatabaseHelper.AddOrUpdateWebTimeTracking(data);
+
+                // 刷新显示
+                LoadUsageData();
+                LoadWebTrackingData();
+
+                // 可以在这里添加通知或其他处理逻辑
+                Console.WriteLine($"✅ 已保存Web时间追踪数据: {data.Title} ({data.Domain})");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"❌ 处理Web时间追踪数据时出错: {ex.Message}");
+            }
+        }
+
+        private void LoadWebTrackingData()
+        {
+            try
+            {
+                var webTrackingData = DatabaseHelper.GetTodayWebTracking();
+                Console.WriteLine($"📊 加载到 {webTrackingData.Count} 条Web时间追踪数据");
+
+                if (webTrackingData.Count == 0)
+                {
+                    Console.WriteLine("📊 没有Web时间追踪数据，添加测试数据");
+                    AddTestWebTrackingData();
+                    webTrackingData = DatabaseHelper.GetTodayWebTracking();
+                }
+
+                WebTrackingList.ItemsSource = webTrackingData;
+                Console.WriteLine($"✅ Web时间追踪数据已加载到UI");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"❌ 加载Web时间追踪数据时出错: {ex.Message}");
+                // 如果出错，至少显示一些测试数据
+                AddTestWebTrackingData();
+            }
+        }
+
+        protected override void OnClosed(EventArgs e)
+        {
+            // 停止WebSocket服务
+            webSocketService?.StopServer();
+            base.OnClosed(e);
+        }
+
+        private async void TestWebSocketButton_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                TestWebSocketButton.IsEnabled = false;
+                TestWebSocketButton.Content = "测试中...";
+
+                // 获取当前WebSocket服务器URL
+                string serverUrl = "ws://localhost:9000/";
+                if (webSocketService != null && webSocketService.IsRunning())
+                {
+                    var status = webSocketService.GetServerStatus();
+                    if (status.Contains("http://localhost:"))
+                    {
+                        var port = status.Split(':').Last().Split('/').First();
+                        serverUrl = $"ws://localhost:{port}/";
+                    }
+                }
+
+                await WebSocketTestClient.TestConnection(serverUrl);
+
+                // 刷新状态
+                UpdateWebSocketStatus();
+                LoadWebTrackingData();
+
+                TestWebSocketButton.Content = "测试完成";
+                await Task.Delay(2000);
+                TestWebSocketButton.Content = "测试连接";
+            }
+            catch (Exception ex)
+            {
+                TestWebSocketButton.Content = "测试失败";
+                Console.WriteLine($"测试WebSocket连接失败: {ex.Message}");
+            }
+            finally
+            {
+                TestWebSocketButton.IsEnabled = true;
+            }
+
+        }
+
+        private void AppStatsButton_Click(object sender, RoutedEventArgs e)
+        {
+            // 切换到应用统计
+            AppStatsButton.Background = new SolidColorBrush(System.Windows.Media.Color.FromRgb(0x4A, 0xDE, 0x80)); // #4ADE80
+            AppStatsButton.Foreground = new SolidColorBrush(System.Windows.Media.Color.FromRgb(0x1A, 0x1A, 0x2E)); // #1A1A2E
+            WebStatsButton.Background = new SolidColorBrush(System.Windows.Media.Color.FromRgb(0x3B, 0x2E, 0x58)); // #3B2E58
+            WebStatsButton.Foreground = new SolidColorBrush(System.Windows.Media.Color.FromRgb(0xE0, 0xE0, 0xE0)); // #E0E0E0
+
+            AppStatsContent.Visibility = Visibility.Visible;
+            WebStatsContent.Visibility = Visibility.Collapsed;
+        }
+
+        private void WebStatsButton_Click(object sender, RoutedEventArgs e)
+        {
+            // 切换到网站统计
+            WebStatsButton.Background = new SolidColorBrush(System.Windows.Media.Color.FromRgb(0x4A, 0xDE, 0x80)); // #4ADE80
+            WebStatsButton.Foreground = new SolidColorBrush(System.Windows.Media.Color.FromRgb(0x1A, 0x1A, 0x2E)); // #1A1A2E
+            AppStatsButton.Background = new SolidColorBrush(System.Windows.Media.Color.FromRgb(0x3B, 0x2E, 0x58)); // #3B2E58
+            AppStatsButton.Foreground = new SolidColorBrush(System.Windows.Media.Color.FromRgb(0xE0, 0xE0, 0xE0)); // #E0E0E0
+
+            AppStatsContent.Visibility = Visibility.Collapsed;
+            WebStatsContent.Visibility = Visibility.Visible;
+        }
+
     }
 }

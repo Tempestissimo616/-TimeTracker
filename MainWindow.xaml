@@ -29,7 +29,7 @@
                 </Border.Background>
             </Border>
 
-            <Border CornerRadius="0 25 25 0" MouseDown="Border_MouseDown" Margin="218,0,-2,0" Grid.ColumnSpan="2">
+            <Border CornerRadius="0 25 25 0" MouseDown="Border_MouseDown" Margin="110,0,-2,0" Grid.ColumnSpan="2">
                 <Border.Background>
                     <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
                         <GradientStop Color="#3E3A65" Offset="0" />
@@ -50,62 +50,19 @@
             <!--Main Menu-->
             <StackPanel Width="240">
                 <StackPanel Orientation="Horizontal" Margin="0 50 20 40" HorizontalAlignment="Center"/>
-
-                <Button Style="{StaticResource activeMenuButton}">
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="53*"/>
-                            <ColumnDefinition Width="34*"/>
-                        </Grid.ColumnDefinitions>
-                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
-                            <fa:ImageAwesome Icon="FolderOutline" Style="{StaticResource buttonIcon}" />
-                            <TextBlock Text="Wallet" Style="{StaticResource buttonText}" />
-                        </StackPanel>
-                        <fa:ImageAwesome Icon="AngleRight" HorizontalAlignment="Left" Visibility="Visible" Style="{StaticResource buttonIconExpand}" Grid.Column="1" Margin="58,4,0,4" />
-                    </Grid>
-                </Button>
-
-                <Button Style="{StaticResource menuButton}">
+                <Button Style="{StaticResource menuButton}" Width="244">
                     <Grid>
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
-                            <fa:ImageAwesome Icon="BellOutline" Style="{StaticResource buttonIcon}" />
+                            <fa:ImageAwesome Icon="BellOutline" Style="{StaticResource buttonIcon}" RenderTransformOrigin="0.535,0.5" />
                             <TextBlock Text="Notifications" Style="{StaticResource buttonText}" />
                         </StackPanel>
-                        <fa:ImageAwesome Name="sal" Icon="AngleRight" HorizontalAlignment="Right" Style="{StaticResource buttonIconExpand}" />
+                        <fa:ImageAwesome x:Name="sal" Icon="AngleRight" HorizontalAlignment="Right" Style="{StaticResource buttonIconExpand}" />
                     </Grid>
                 </Button>
 
-                <Button Style="{StaticResource menuButton}">
-                    <Grid>
-                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
-                            <fa:ImageAwesome Icon="Money" Style="{StaticResource buttonIcon}" />
-                            <TextBlock Text="Deposit" Style="{StaticResource buttonText}" />
-                        </StackPanel>
-                        <fa:ImageAwesome Icon="AngleRight" HorizontalAlignment="Right" Style="{StaticResource buttonIconExpand}" />
-                    </Grid>
-                </Button>
+                <Button Style="{StaticResource menuButton}"/>
 
-                <Button Style="{StaticResource menuButton}">
-                    <Grid>
-                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
-                            <fa:ImageAwesome Icon="Clone" Style="{StaticResource buttonIcon}" />
-                            <TextBlock Text="Records" Style="{StaticResource buttonText}" />
-                        </StackPanel>
-                        <fa:ImageAwesome Icon="AngleRight" HorizontalAlignment="Right" Style="{StaticResource buttonIconExpand}" />
-                    </Grid>
-                </Button>
-
-                <Button Style="{StaticResource menuButton}" Width="204" Click="Button_Click">
-                    <Grid>
-                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
-                            <fa:ImageAwesome Icon="CommentOutline" Style="{StaticResource buttonIcon}" />
-                            <TextBlock Text="Messages" Style="{StaticResource buttonText}" />
-                        </StackPanel>
-                        <fa:ImageAwesome Icon="AngleRight" HorizontalAlignment="Right" Style="{StaticResource buttonIconExpand}" />
-                    </Grid>
-                </Button>
-
-                <Button Style="{StaticResource menuButton}">
+                <Button Style="{StaticResource menuButton}" Width="244">
                     <Grid>
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
                             <fa:ImageAwesome Icon="Television" Style="{StaticResource buttonIcon}" />
@@ -115,19 +72,9 @@
                     </Grid>
                 </Button>
 
-                <Button Style="{StaticResource menuButton}">
-                    <Grid>
-                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
-                            <fa:ImageAwesome Icon="CreditCard" Style="{StaticResource buttonIcon}" />
-                            <TextBlock Text="My Cards" Style="{StaticResource buttonText}" />
-                        </StackPanel>
-                        <fa:ImageAwesome Icon="AngleRight" HorizontalAlignment="Right" Style="{StaticResource buttonIconExpand}" />
-                    </Grid>
-                </Button>
-
                 <Separator Background="#e0e0e0" Opacity="0.5" Margin="50 15 60 15"/>
 
-                <Button Style="{StaticResource menuButton}">
+                <Button Style="{StaticResource menuButton}" Width="244">
                     <Grid>
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
                             <fa:ImageAwesome Icon="FolderOutlinepenOutline" Style="{StaticResource buttonIcon}" />
@@ -136,8 +83,7 @@
                         <fa:ImageAwesome Icon="AngleRight" HorizontalAlignment="Right" Style="{StaticResource buttonIconExpand}" />
                     </Grid>
                 </Button>
-
-                <Button Style="{StaticResource menuButton}">
+                <Button Style="{StaticResource menuButton}" Width="245">
                     <Grid>
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
                             <fa:ImageAwesome Icon="CircleOutlineNotch" Style="{StaticResource buttonIcon}" />
@@ -196,8 +142,8 @@
                                     MouseLeftButtonUp="WhitelistBox_Click"
                                     Cursor="Hand"
                                     Margin="0,8,0,0">
-                                                            <TextBlock x:Name="WhitelistTextBlock" Text="点击设置白名单" Foreground="#aaa" FontSize="15"/>
-                                                        </Border>
+                                <TextBlock x:Name="WhitelistTextBlock" Text="点击设置白名单" Foreground="#aaa" FontSize="15"/>
+                            </Border>
 
                             <Popup x:Name="WhitelistPopup"
        PlacementTarget="{Binding ElementName=WhitelistBox}"
@@ -287,8 +233,8 @@
                                     <TextBlock x:Name="RestTimeText" Text="2" Foreground="#4ADE80" FontWeight="Bold"/>
                                 </Border>
                                 <TextBlock Text="min rest" Foreground="#aaa"/>
-                                
-                                
+
+
                             </StackPanel>
                         </StackPanel>
 
@@ -296,7 +242,7 @@
 
                     </StackPanel>
 
-                    
+
                 </Border>
 
                 <Button x:Name="StartFocusButton"
@@ -325,7 +271,42 @@
                         </StackPanel>
                     </Border>
                 </Border>
-                <Border Style="{StaticResource border}" Height="266" Margin="0,30,0,0">
+                <!-- 统计切换按钮 -->
+                <Border Style="{StaticResource border}" Height="60" Margin="0,30,0,0">
+                    <Border Background="#2D254A" CornerRadius="16" Padding="8">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <!-- 应用统计按钮 -->
+                            <Button x:Name="AppStatsButton" Grid.Column="0" 
+                                    Background="#4ADE80" Foreground="#1A1A2E" 
+                                    FontWeight="Bold" FontSize="14" Margin="4,0,2,0"
+                                    Click="AppStatsButton_Click">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="📱" FontSize="16" Margin="0,0,8,0"/>
+                                    <TextBlock Text="应用统计"/>
+                                </StackPanel>
+                            </Button>
+
+                            <!-- 网站统计按钮 -->
+                            <Button x:Name="WebStatsButton" Grid.Column="1" 
+                                    Background="#3B2E58" Foreground="#E0E0E0" 
+                                    FontWeight="Bold" FontSize="14" Margin="2,0,4,0"
+                                    Click="WebStatsButton_Click">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="🌐" FontSize="16" Margin="0,0,8,0"/>
+                                    <TextBlock Text="网站统计"/>
+                                </StackPanel>
+                            </Button>
+                        </Grid>
+                    </Border>
+                </Border>
+
+                <!-- 应用统计内容 -->
+                <Border x:Name="AppStatsContent" Style="{StaticResource border}" Height="266" Margin="0,20,0,0">
                     <ScrollViewer VerticalScrollBarVisibility="Hidden">
                         <ItemsControl x:Name="UsageList">
                             <ItemsControl.ItemTemplate>
@@ -366,6 +347,57 @@
                         </ItemsControl>
                     </ScrollViewer>
                 </Border>
+
+                <!-- 网站统计内容 -->
+                <Border x:Name="WebStatsContent" Style="{StaticResource border}" Height="266" Margin="0,20,0,0" Visibility="Collapsed">
+                    <Border Background="#2D254A" CornerRadius="24" Padding="24">
+                        <StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="0,0,0,16">
+                                <TextBlock Text="🌐 网站统计" Foreground="#7ED957" FontWeight="Bold" FontSize="18"/>
+                                <TextBlock x:Name="WebSocketStatusText" Text="检查中..." Foreground="#FF6B6B" FontSize="12" Margin="10,0,0,0" VerticalAlignment="Center"/>
+                                <Button x:Name="TestWebSocketButton" Content="测试连接" 
+                                        Background="#3B2E58" Foreground="#fff" 
+                                        FontSize="10" Padding="8,4" Margin="10,0,0,0"
+                                        Click="TestWebSocketButton_Click"/>
+                            </StackPanel>
+                            <ScrollViewer VerticalScrollBarVisibility="Hidden" Height="180">
+                                <ItemsControl x:Name="WebTrackingList">
+                                    <ItemsControl.ItemTemplate>
+                                        <DataTemplate>
+                                            <Grid Margin="0 8 0 8">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*"/>
+                                                    <ColumnDefinition Width="80"/>
+                                                </Grid.ColumnDefinitions>
+                                                <!-- 网站信息 -->
+                                                <StackPanel Grid.Column="0">
+                                                    <Image Source="{Binding Icon}" Width="16" Height="16" Margin="0,0,6,0"/>
+                                                    <TextBlock Text="{Binding Title}" 
+                                                               FontSize="12" FontWeight="Bold" 
+                                                               Foreground="#E0E0E0" 
+                                                               TextTrimming="CharacterEllipsis"/>
+                                                    <TextBlock Text="{Binding Domain}" 
+                                                               FontSize="10" 
+                                                               Foreground="#aaa" 
+                                                               TextTrimming="CharacterEllipsis"/>
+                                                </StackPanel>
+                                                <!-- 时长 -->
+                                                <TextBlock Grid.Column="1" 
+                                                           Text="{Binding FormattedDuration}" 
+                                                           VerticalAlignment="Center" 
+                                                           HorizontalAlignment="Right"
+                                                           Foreground="#E0E0E0" 
+                                                           FontSize="10" 
+                                                           FontWeight="Bold"/>
+                                            </Grid>
+                                        </DataTemplate>
+                                    </ItemsControl.ItemTemplate>
+                                </ItemsControl>
+                            </ScrollViewer>
+                        </StackPanel>
+                    </Border>
+                </Border>
+
 
                 <!--Security Card-->
 
